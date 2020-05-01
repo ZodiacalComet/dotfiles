@@ -55,7 +55,7 @@ super + ctrl + {m,x,y,z}
 #
 
 # focus the node in the given direction
-alt + {_,shift + }{h,j,k,l}
+super + {_,shift + }{h,j,k,l}
 	bspc node -{f,s} {west,south,north,east}
 
 # focus the node for the given path jump
@@ -125,4 +125,15 @@ super + {Left,Down,Up,Right}
 # Restart polybar
 super + shift + p
 	~/.config/polybar/launch.sh
+
+# Volume Control
+
+XF86AudioRaiseVolume
+	pactl set-sink-mute 0 false ; pactl set-sink-volume 0 +5%
+
+XF86AudioLowerVolume
+	pactl set-sink-mute 0 false ; pactl set-sink-volume 0 -5%
+
+XF86AudioMute
+	pactl set-sink-mute 0 toggle
 
