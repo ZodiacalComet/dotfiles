@@ -1,10 +1,14 @@
 #!/bin/sh
 
-# Set resolution to 1024x720
-xrandr -s 16
+# Use external monitor as the primary one
+# Disable laptop's monitor
+# Set resolution to 1024x768
+xrandr --output VGA1 --primary
+xrandr --output LVDS1 --off
+xrandr --output VGA1 --mode 1024x768
 
-# Restore wallpaper and theme
-wal -R
+# Restore wallpaper
+feh --bg-max ~/wall.png --image-bg 000000
 
 # Merge .Xresources
 xrdb -merge ~/.Xresources
