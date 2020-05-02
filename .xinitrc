@@ -19,6 +19,9 @@ xsetroot -cursor_name left_ptr &
 # Start sxhkd
 sxhkd &
 
+# Start mpd
+mpd &
+
 # Start polybar
 ~/.config/polybar/launch.sh
 
