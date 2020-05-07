@@ -126,6 +126,13 @@ super + {Left,Down,Up,Right}
 super + shift + p
 	~/.config/polybar/launch.sh
 
+# Screenshots
+Print
+	scrot -u -z '%Y-%m-%d_%H:%M:%S.png' -e 'mv $f ~/Pictures/Screenshots' && notify-send "Window Screenshot" "Image Saved to Screenshots"
+
+super + Print
+	scrot -m -z '%Y-%m-%d_%H:%M:%S.png' -e 'mv $f ~/Pictures/Screenshots' && notify-send "Screen Screenshow" "Image Saved to Screenshots"
+
 # Volume Control
 
 XF86AudioRaiseVolume
