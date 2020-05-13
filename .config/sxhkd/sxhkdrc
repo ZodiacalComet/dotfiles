@@ -144,3 +144,8 @@ XF86AudioLowerVolume
 XF86AudioMute
 	pactl set-sink-mute 0 toggle
 
+# Power Menu
+
+super + F1
+	~/.scripts/system-menu
+
