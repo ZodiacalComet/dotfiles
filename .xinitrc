@@ -19,6 +19,9 @@ xrdb -merge ~/.Xresources
 # Set cursor
 xsetroot -cursor_name left_ptr &
 
+# Start dunst
+dunst &
+
 # Start sxhkd
 sxhkd &
 
