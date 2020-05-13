@@ -1,2 +1,8 @@
 alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
+alias download-video='youtube-dl --continue -f "mp4[height=480]+bestaudio" -o "~/Videos/Youtube-DL/[%(extractor)s] %(uploader)s/%(title)s.%(ext)s"'
+alias download-audio='youtube-dl --continue --extract-audio --audio-format mp3 --audio-quality 0 -o "~/Music/Youtube-DL/[%(extractor)s] - [%(uploader)s] - %(title)s.%(ext)s"'
+alias play-url='mpv --ytdl-format="mp4[height=480]+bestaudio"'
+
+alias lc="exa -alFg --color=always --group-directories-first --git"
+
