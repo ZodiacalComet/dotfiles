@@ -31,9 +31,6 @@ export ZSH="$HOME/.oh-my-zsh"
 
 export XDG_CONFIG_HOME="$HOME/.config"
 
-# Directory to use on ~/.scripts/bin/set-wallpaper
-export WALLPAPER_DIR="$HOME/Pictures/Wallpapers"
-
 # Personal scripts to expose
 if [[ -d "$HOME/.scripts/bin" ]]; then
   export PATH="$PATH:$HOME/.scripts/bin"
