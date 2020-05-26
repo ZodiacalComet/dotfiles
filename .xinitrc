@@ -8,9 +8,9 @@ xrandr --output LVDS1 --off
 xrandr --output VGA1 --mode 1024x768
 
 # Restore wallpaper
-if [ -f ~/wall.png ]
+if [ -f ~/wall ]
 then
-	feh --bg-max ~/wall.png --image-bg 000000
+	feh --bg-max ~/wall --image-bg 000000
 fi
 
 # Merge .Xresources
