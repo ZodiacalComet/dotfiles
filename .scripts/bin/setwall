@@ -1,0 +1,42 @@
+#!/bin/bash
+
+# Script to set a wallpaper using feh, and ensure that it is set by
+# .xinitrc by copying the image into ~/wall
+#
+# Takes one argument, which can be either a file or a directory.
+# 
+# If a file is given, it get copied and set as wallpaper.
+#
+# If a directory is given, it searches for every file with a png, jpg and
+# jpeg extension then it will select one at random to copy and set as
+# wallpaper.
+#
+# This is practically the same as Luke Smith's setbg script that he showed
+# on his video: Wallpapers Easily and "Hackably" on Linux. Just without
+# pywal or using xwallpaper.
+# His video: https://www.youtube.com/watch?v=IUvM2Hc6jtk 
+
+notification_time=2500
+
+if [ -f "$1" ]
+then
+    IMG="$1"
+    notify-send -u normal -t $notification_time "Wallpaper" "Setting given image."
+
+elif [ -d "$1" ]
+then
+    # Select a random image from given directory
+    IMG="$(find "$1" -name "*.png" -o -name "*.jpeg" -o -name "*.jpg" -type f | shuf -n 1)"
+    notify-send -u normal -t $notification_time "Wallpaper" "Setting random image from given directory."
+
+else
+    echo "Argument needs to be a file or a directory."
+    exit
+fi
+
+# Allow wallpaper to be set again at startup
+cp $IMG ~/wall
+
+# Set wallpapaer
+feh --bg-max $IMG --image-bg 000000
+
