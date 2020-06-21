@@ -54,3 +54,14 @@ XTerm.vt100.faceName: MesloLGS NF:style=Regular:size=10
 *.color14: nord7
 *.color15: nord6
 
+
+! -----------------
+!   Dmenu Config
+! -----------------
+
+dmenu.font: MesloLGS NF:style=Regular:size=12
+dmenu.background: nord0
+dmenu.foreground: nord4
+dmenu.selbackground: nord3
+dmenu.selforeground: nord6
+
