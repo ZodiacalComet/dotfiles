@@ -23,7 +23,7 @@ xsetroot -cursor_name left_ptr &
 dunst &
 
 # Start sxhkd
-sxhkd &
+sxhkd ~/.config/sxhkd/other_hotkeys &
 
 # Start mpd
 mpd &

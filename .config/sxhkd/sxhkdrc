@@ -4,11 +4,11 @@
 
 # terminal emulator
 super + Return
-	xterm
+	$TERMINAL
 
 # program launcher
 super + @space
-	dmenu_run -i -fn "MesloLGS NF:size=12" -nb "#2E3440" -nf "#D8DEE9" -sb "#4C566A" -sf "#ECEFF4"
+	dmenu_run -i
 
 # make sxhkd reload its configuration files:
 super + Escape
@@ -119,33 +119,4 @@ super + alt + shift + {h,j,k,l}
 # move a floating window
 super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
-
-##################################################################
-
-# Restart polybar
-super + shift + p
-	~/.config/polybar/launch.sh
-
-# Screenshots
-Print
-	scrot -u -z '%Y-%m-%d_%H:%M:%S.png' -e 'mv $f ~/Pictures/Screenshots' && notify-send "Window Screenshot" "Image Saved to Screenshots"
-
-super + Print
-	scrot -m -z '%Y-%m-%d_%H:%M:%S.png' -e 'mv $f ~/Pictures/Screenshots' && notify-send "Screen Screenshow" "Image Saved to Screenshots"
-
-# Volume Control
-
-XF86AudioRaiseVolume
-	pactl set-sink-mute 0 false ; pactl set-sink-volume 0 +2%
-
-XF86AudioLowerVolume
-	pactl set-sink-mute 0 false ; pactl set-sink-volume 0 -2%
-
-XF86AudioMute
-	pactl set-sink-mute 0 toggle
-
-# Power Menu
-
-super + F1
-	~/.scripts/system-menu
 
