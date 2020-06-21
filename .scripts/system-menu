@@ -5,7 +5,7 @@ REBOOT=" Reboot"
 
 OPTIONS="$SHUTDOWN|$REBOOT"
 
-CHOICE="$(echo "$OPTIONS" | tr "|" "\n" | dmenu -i -p "System Menu: " -fn "MesloLGS NF:size=12" -nb "#2E3440" -nf "#D8DEE9" -sb "#4C566A" -sf "#ECEFF4")"
+CHOICE="$(echo "$OPTIONS" | tr "|" "\n" | dmenu -i -c -l 2 -bw 4 -p "System Menu: ")"
 
 case "$CHOICE" in
 	$SHUTDOWN) systemctl -i poweroff ;;
