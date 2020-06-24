@@ -1,58 +1,54 @@
 
-XTerm.termName: xterm-256color
-XTerm.vt100.faceName: MesloLGS NF:style=Regular:size=10
+*.font: MesloLGS NF:style=Regular:size=10
 
-! -----------------
-!    Nord Theme
-! -----------------
+! Theme: MaterialOcean
+! Got it from: https://github.com/mbadolato/iTerm2-Color-Schemes/blob/master/Xresources/MaterialOcean
+! On this Github repo: https://github.com/mbadolato/iTerm2-Color-Schemes
 
-! Copyright (c) 2016-present Arctic Ice Studio <development@arcticicestudio.com>
-! Copyright (c) 2016-present Sven Greb <code@svengreb.de>
-
-! Project:    Nord XResources
-! Version:    0.1.0
-! Repository: https://github.com/arcticicestudio/nord-xresources
-! License:    MIT
-
-#define nord0 #2E3440
-#define nord1 #3B4252
-#define nord2 #434C5E
-#define nord3 #4C566A
-#define nord4 #D8DEE9
-#define nord5 #E5E9F0
-#define nord6 #ECEFF4
-#define nord7 #8FBCBB
-#define nord8 #88C0D0
-#define nord9 #81A1C1
-#define nord10 #5E81AC
-#define nord11 #BF616A
-#define nord12 #D08770
-#define nord13 #EBCB8B
-#define nord14 #A3BE8C
-#define nord15 #B48EAD
-
-*.foreground:   nord4
-*.background:   nord0
-*.cursorColor:  nord4
-*fading: 35
-*fadeColor: nord3
-
-*.color0: nord1
-*.color1: nord11
-*.color2: nord14
-*.color3: nord13
-*.color4: nord9
-*.color5: nord15
-*.color6: nord8
-*.color7: nord5
-*.color8: nord3
-*.color9: nord11
-*.color10: nord14
-*.color11: nord13
-*.color12: nord9
-*.color13: nord15
-*.color14: nord7
-*.color15: nord6
+!
+! Generated with :
+! XRDB2Xreources.py
+!
+*.foreground:  #8f93a2
+*.background:  #0f111a
+*.cursorColor: #ffffff
+!
+! Black
+*.color0:      #546e7a
+*.color8:      #546e7a
+!
+! Red
+*.color1:      #ff5370
+*.color9:      #ff5370
+!
+! Green
+*.color2:      #c3e88d
+*.color10:     #c3e88d
+!
+! Yellow
+*.color3:      #ffcb6b
+*.color11:     #ffcb6b
+!
+! Blue
+*.color4:      #82aaff
+*.color12:     #82aaff
+!
+! Magenta
+*.color5:      #c792ea
+*.color13:     #c792ea
+!
+! Cyan
+*.color6:      #89ddff
+*.color14:     #89ddff
+!
+! White
+*.color7:      #ffffff
+*.color15:     #ffffff
+!
+! Bold, Italic, Underline
+*.colorBD:     #8f93a2
+!*.colorIT:
+!*.colorUL:
 
 
 ! -----------------
@@ -60,8 +56,8 @@ XTerm.vt100.faceName: MesloLGS NF:style=Regular:size=10
 ! -----------------
 
 dmenu.font: MesloLGS NF:style=Regular:size=12
-dmenu.background: nord0
-dmenu.foreground: nord4
-dmenu.selbackground: nord3
-dmenu.selforeground: nord6
+dmenu.background: #0f111a
+dmenu.foreground: #8f93a2
+dmenu.selbackground: #82aaff
+dmenu.selforeground: #ffffff
 

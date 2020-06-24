@@ -1,0 +1,61 @@
+#!/usr/bin/env python3
+"""
+Simple Python script to get a color from the ~/.Xresources file.
+
+It expects an argument, the name of the color variable to get from that file.
+
+Usage:
+    $ get_xresources_color color0
+    #546e7a
+
+    $ get_xresources_color background
+    #0f111a
+
+Filters by line the contents of the file, gets the ones that start with '*.'
+and ignores the ones that contains 'font' on them. Gets rid of all trailing
+whitespace and maps the name of each variable and hex value. Goes through
+them until it finds the one that matches the given argument and prints it.
+
+For now, its existence is for being able to get those values inside
+~/.config/bspwm/bspwmrc
+"""
+from pathlib import Path
+from sys import argv
+
+if len(argv) == 1:
+    exit()
+
+
+COLOR_TO_GET = argv[1]
+X_FILE = Path.home() / ".Xresources"
+
+
+with X_FILE.open("r", encoding="utf-8") as f:
+    content = f.read()
+
+
+def filter_colors(line: str):
+    if not line.startswith("*."):
+        return False
+
+    if "font" in line:
+        return False
+
+    return True
+
+
+def map_colors(line: str):
+    name, hex_color = line.split(":")
+
+    name = name[2:]
+    hex_color = hex_color.strip()
+
+    return (name, hex_color)
+
+
+for name, hex_color in map(map_colors, filter(filter_colors, content.splitlines())):
+    if not name == COLOR_TO_GET:
+        continue
+
+    print(hex_color)
+    break
