@@ -12,6 +12,11 @@
 *.foreground:  #8f93a2
 *.background:  #0f111a
 *.cursorColor: #ffffff
+
+!
+! Alt (Added)
+background-alt: #272d47
+foreground-alt: #b7bbc9
 !
 ! Black
 *.color0:      #546e7a
