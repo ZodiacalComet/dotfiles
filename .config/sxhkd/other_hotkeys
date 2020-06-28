@@ -6,10 +6,10 @@ super + shift + p
 # Screenshots
 
 Print
-	scrot -u -z '%Y-%m-%d_%H:%M:%S.png' -e 'mv $f ~/Pictures/Screenshots' && notify-send "Window Screenshot" "Image Saved to Screenshots"
+	scrot -u -z '%Y-%m-%d_%H-%M-%S.png' -e 'mv $f ~/Pictures/Screenshots' && notify-send "Window Screenshot" "Image Saved to Screenshots"
 
 super + Print
-	scrot -m -z '%Y-%m-%d_%H:%M:%S.png' -e 'mv $f ~/Pictures/Screenshots' && notify-send "Screen Screenshow" "Image Saved to Screenshots"
+	scrot -m -z '%Y-%m-%d_%H-%M-%S.png' -e 'mv $f ~/Pictures/Screenshots' && notify-send "Screen Screenshow" "Image Saved to Screenshots"
 
 # Volume Control
 
