@@ -27,3 +27,8 @@ XF86AudioMute
 super + F1
 	~/.scripts/system-menu
 
+# Change keyboard language
+
+super + F2
+	~/.scripts/change-keyboard-layout
+

@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# Simple script to make a binding with sxhkd to dynamically change the keyboard
+# language between US and ES.
+
+if [ -n "$(setxkbmap -query | grep "us")" ]
+then
+    setxkbmap es
+else
+    setxkbmap us
+fi
+
