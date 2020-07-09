@@ -15,8 +15,8 @@
 
 !
 ! Alt (Added)
-background-alt: #272d47
-foreground-alt: #b7bbc9
+*.background-alt: #272d47
+*.foreground-alt: #b7bbc9
 !
 ! Black
 *.color0:      #546e7a
