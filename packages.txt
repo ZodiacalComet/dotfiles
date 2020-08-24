@@ -11,6 +11,7 @@ figlet
 fzf
 git
 htop
+libharfbuzz-dev
 libnotify-bin
 libssl-dev
 libx11-dev
