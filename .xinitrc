@@ -28,6 +28,9 @@ sxhkd ~/.config/sxhkd/other_hotkeys &
 # Start mpd
 mpd &
 
+# Start picom
+picom &
+
 # Start polybar
 ~/.config/polybar/launch.sh
 
