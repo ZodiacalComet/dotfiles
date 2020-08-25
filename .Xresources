@@ -1,5 +1,6 @@
 
 *.font: JetBrainsMono Nerd Font Mono:style=Bold:size=10
+*.alpha: 0.9
 
 ! Theme: MaterialOcean
 ! Got it from: https://github.com/mbadolato/iTerm2-Color-Schemes/blob/master/Xresources/MaterialOcean
@@ -65,4 +66,3 @@ dmenu.background: #0f111a
 dmenu.foreground: #8f93a2
 dmenu.selbackground: #82aaff
 dmenu.selforeground: #ffffff
-
