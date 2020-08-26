@@ -1,0 +1,34 @@
+
+# Binds
+macro p set browser "~/.scripts/bin/play-url %u"; open-in-browser ; set browser "elinks %u"
+
+#bind-key j next
+#bind-key k prev
+#bind-key J next-feed
+#bind-key K prev-feed
+#bind-key j down article
+#bind-key k up article
+#bind-key J next article
+#bind-key K prev article
+
+# Highligts
+highlight feedlist	"--.*?--"			yellow	default	bold
+
+highlight article	"^Feed: .*?"			yellow	default bold
+highlight article	"^Title: .*?"			blue	default	bold
+highlight article	"^Author: .*?"			cyan	default	bold
+highlight article	"^Date: .*?"			white	default	bold
+highlight article	"^Link:"			green	default bold
+highlight article	"https?://[^ ]+"		green	default	bold
+
+# Color
+color listnormal					white	default
+color listnormal_unread					red	default
+
+color listfocus						white	blue	bold
+color listfocus_unread					white	blue	bold
+
+color background					default	default
+color info						yellow	default	standout
+
+color article						white	default
