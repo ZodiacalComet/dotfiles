@@ -25,6 +25,7 @@ libmpdclient-dev
 libnotify-bin
 libpcre2-dev
 libpulse-dev
+libreoffice
 libssl-dev
 libx11-dev
 libx11-xcb-dev
