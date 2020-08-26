@@ -1,0 +1,3 @@
+#!/bin/bash
+
+mpv --ytdl-format="mp4[height<=480]+bestaudio" $*
