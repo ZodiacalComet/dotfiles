@@ -50,6 +50,7 @@ libxext-dev
 libxft-dev
 libxinerama-dev
 locate
+lxappearance
 meson
 mpc
 mpd
