@@ -12,6 +12,7 @@ ffmpeg
 figlet
 fzf
 git
+gnome-disk-utility
 htop
 libcairo2-dev
 libconfig-dev
