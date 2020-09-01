@@ -82,6 +82,7 @@ uthash-dev
 vainfo
 vim-gtk
 vim
+vlc
 wget
 xcb-proto
 xclip
