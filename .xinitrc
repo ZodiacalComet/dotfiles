@@ -22,6 +22,9 @@ xsetroot -cursor_name left_ptr &
 # Start dunst
 dunst &
 
+# Start flameshot
+flameshot &
+
 # Start sxhkd
 sxhkd ~/.config/sxhkd/other_hotkeys &
 
@@ -36,4 +39,3 @@ picom &
 
 # Starts BSPWM
 exec bspwm
-
