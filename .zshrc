@@ -7,27 +7,23 @@ source ~/.powerlevel10k/powerlevel10k.zsh-theme
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-if [[ -d "$HOME/.poetry/bin" ]]; then
-  export PATH="$PATH:$HOME/.poetry/bin"
-fi
+function add_to_path() {
+    if [[ -d "$1" ]] ; then
+        export PATH="$PATH:$1"
+    fi
+}
 
-if [[ -d "$HOME/.local/bin" ]]; then
-  export PATH="$PATH:$HOME/.local/bin"
-fi
+add_to_path "$HOME/.poetry/bin"
+add_to_path "$HOME/.local/bin"
 
 export XDG_CONFIG_HOME="$HOME/.config"
 
 # Personal scripts to expose
-if [[ -d "$HOME/.scripts/bin" ]]; then
-  export PATH="$PATH:$HOME/.scripts/bin"
-fi
+add_to_path "$HOME/.scripts/bin"
 
 # Gem installation directory
 export GEM_HOME="$HOME/gems"
-
-if [[ -d "$HOME/gems/bin" ]]; then
-  export PATH="$HOME/gems/bin:$PATH"
-fi
+add_to_path "$HOME/gems/bin"
 
 ##########################################################
 
