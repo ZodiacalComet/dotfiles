@@ -4,8 +4,7 @@ source ~/.powerlevel10k/powerlevel10k.zsh-theme
 
 ##########################################################
 
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games"
 
 function add_to_path() {
     if [[ -d "$1" ]] ; then
