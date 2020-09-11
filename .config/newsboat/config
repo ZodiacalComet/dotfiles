@@ -1,6 +1,7 @@
 
 # Binds
 macro p set browser "~/.scripts/bin/play-url %u"; open-in-browser ; set browser "elinks %u"
+macro i set browser "~/.scripts/show-yt-info %u"; open-in-browser ; set browser "elinks %u"
 
 #bind-key j next
 #bind-key k prev
