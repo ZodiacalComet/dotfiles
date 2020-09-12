@@ -317,7 +317,7 @@ mpd_music_dir = ~/Music
 ## Note: You can specify third character which will be used to build 'empty'
 ## part of progressbar.
 ##
-#progressbar_look = =>
+progressbar_look = "━━─"
 #
 ## Available values: database, playlist.
 ##
@@ -325,7 +325,7 @@ mpd_music_dir = ~/Music
 #
 ## Available values: classic, alternative.
 ##
-#user_interface = classic
+user_interface = alternative
 #
 #data_fetching_delay = yes
 #
@@ -512,7 +512,7 @@ display_volume_level = no
 #
 #empty_tag_color = cyan
 #
-#header_window_color = default
+header_window_color = white
 #
 #volume_color = default
 #
@@ -520,21 +520,21 @@ display_volume_level = no
 #
 #state_flags_color = default:b
 #
-#main_window_color = yellow
+main_window_color = blue
 #
 #color1 = white
 #
 #color2 = green
 #
-#progressbar_color = black:b
+progressbar_color = blue:b
 #
-#progressbar_elapsed_color = green:b
+progressbar_elapsed_color = yellow:b
 #
 #statusbar_color = default
 #
-#statusbar_time_color = default:b
+statusbar_time_color = green:b
 #
-#player_state_color = default:b
+player_state_color = yellow:b
 #
 #alternative_ui_separator_color = black:b
 #
