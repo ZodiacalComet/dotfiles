@@ -4,8 +4,8 @@
 # .xinitrc by copying the image into ~/wall
 #
 # Takes one argument, which can be either a file or a directory.
-# 
-# If a file is given, it get copied and set as wallpaper.
+#
+# If a file is given, it gets copied and set as wallpaper.
 #
 # If a directory is given, it searches for every file with a png, jpg and
 # jpeg extension then it will select one at random to copy and set as
@@ -14,7 +14,7 @@
 # This is practically the same as Luke Smith's setbg script that he showed
 # on his video: Wallpapers Easily and "Hackably" on Linux. Just without
 # pywal or using xwallpaper.
-# His video: https://www.youtube.com/watch?v=IUvM2Hc6jtk 
+# His video: https://www.youtube.com/watch?v=IUvM2Hc6jtk
 
 notification_time=2500
 
@@ -34,9 +34,7 @@ else
     exit
 fi
 
-# Allow wallpaper to be set again at startup
+# Make wallpaper to be set at startup by ~/.xinitrc
 cp $IMG ~/wall
 
-# Set wallpapaer
 feh --bg-max $IMG --image-bg 000000
-

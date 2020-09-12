@@ -1,9 +1,14 @@
+################################################################################
+# => Bindings
+################################################################################
 
-# Binds
 macro p set browser "~/.scripts/bin/play-url %u"; open-in-browser ; set browser "elinks %u"
 macro i set browser "~/.scripts/show-yt-info %u"; open-in-browser ; set browser "elinks %u"
 
-# Vim-like movement keys
+#
+# -> Vim-like movement keys
+#
+
 unbind-key ENTER
 unbind-key j
 unbind-key k
@@ -15,24 +20,30 @@ bind-key k up
 bind-key l open
 bind-key h quit
 
-# Highligts
-highlight feedlist	"--.*?--"			yellow	default	bold
+################################################################################
+# => Highlights
+################################################################################
 
-highlight article	"^Feed: .*?"			yellow	default bold
-highlight article	"^Title: .*?"			blue	default	bold
-highlight article	"^Author: .*?"			cyan	default	bold
-highlight article	"^Date: .*?"			white	default	bold
-highlight article	"^Link:"			green	default bold
-highlight article	"https?://[^ ]+"		green	default	bold
+highlight feedlist  "--.*?--"           yellow  default bold
 
-# Color
-color listnormal					white	default
-color listnormal_unread					red	default
+highlight article   "^Feed: .*?"        yellow  default bold
+highlight article   "^Title: .*?"       blue    default bold
+highlight article   "^Author: .*?"      cyan    default bold
+highlight article   "^Date: .*?"        white   default bold
+highlight article   "^Link:"            green   default bold
+highlight article   "https?://[^ ]+"    green   default bold
 
-color listfocus						white	blue	bold
-color listfocus_unread					white	blue	bold
+################################################################################
+# => Color
+################################################################################
 
-color background					default	default
-color info						yellow	default	standout
+color listnormal                        white   default
+color listnormal_unread                 red     default
 
-color article						white	default
+color listfocus                         white   blue    bold
+color listfocus_unread                  white   blue    bold
+
+color background                        default default
+color info                              yellow  default standout
+
+color article                           white   default

@@ -8,7 +8,10 @@ So, this script technically only filters from a defined list of packages.
 """
 from subprocess import run
 
-# Packages that I did not install
+################################################################################
+# => Packages to filter
+################################################################################
+
 TEMP_FILTER = """
 adduser
 apt-listchanges
@@ -216,6 +219,16 @@ xserver-xorg-video-intel
 xxd
 zlib1g
 """.strip().splitlines()
+
+################################################################################
+# => Other filtered packages
+################################################################################
+
+# TEMP_FILTER.extend([])
+
+################################################################################
+# => Printing packages
+################################################################################
 
 output = run(["apt", "list", "--installed"], capture_output=True).stdout.decode("utf-8")
 

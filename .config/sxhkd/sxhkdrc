@@ -1,6 +1,6 @@
-#####################################################################
+################################################################################
 # => General
-#####################################################################
+################################################################################
 
 # Open terminal
 super + Return
@@ -33,7 +33,7 @@ XF86AudioMute
 	pactl set-sink-mute 0 toggle
 
 #
-# => Scripts
+# -> Scripts
 #
 
 # Power Menu
@@ -48,9 +48,9 @@ super + F2
 super + F3
 	~/.scripts/open-in-chromium
 
-#####################################################################
+################################################################################
 # => Bspwm
-#####################################################################
+################################################################################
 
 # Quit bspwm normally
 super + alt + Escape
@@ -73,7 +73,7 @@ super + g
 	bspc node -s biggest
 
 #
-# => State & Flags
+# -> State & Flags
 #
 
 # Set the window state
@@ -85,7 +85,7 @@ super + ctrl + {m,x,y,z}
 	bspc node -g {marked,locked,sticky,private}
 
 #
-# => Focus & Swap
+# -> Focus & Swap
 #
 
 # Focus the node in the given direction
@@ -119,7 +119,7 @@ super + {_,shift + }{1-9,0}
 	bspc {desktop -f,node -d} '^{1-9,10}'
 
 #
-# => Preselect
+# -> Preselect
 #
 
 # Preselect the direction
@@ -139,7 +139,7 @@ super + ctrl + shift + space
 	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
 
 #
-# => Move & Resize
+# -> Move & Resize
 #
 
 # Expand a window by moving one of its side outward

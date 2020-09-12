@@ -13,4 +13,3 @@ do
             setwall "$file" ;;
     esac
 done
-

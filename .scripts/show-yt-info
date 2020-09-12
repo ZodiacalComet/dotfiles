@@ -54,7 +54,10 @@ except ModuleNotFoundError:
     )
     exit(1)
 
-# Constants
+################################################################################
+# => Constants
+################################################################################
+
 YOUTUBE_COMMENT_URL = "https://www.googleapis.com/youtube/v3/commentThreads"
 EDITOR = getenv("EDITOR")
 
@@ -64,8 +67,12 @@ if not EDITOR:
     print("The environment variable 'EDITOR' needs to be defined.")
     exit(1)
 
-# Importing KEY from secret.py file
+#
+# -> Importing secret key
+#
+
 SECRET_FILE_PATH = path.expanduser("~/.secret/secret.py")
+# Getting rid of the ".py" at the end
 SECRET_FILE = path.split(SECRET_FILE_PATH)[1][:-3]
 SECRET_EXAMPLE_LINE = "  YT_API_KEY = 'secret-key-here'"
 
@@ -86,7 +93,10 @@ except AttributeError:
     )
     exit(1)
 
-# Escape markdown function
+################################################################################
+# => Escape markdown function
+################################################################################
+
 # Function taken from the discord.py python module (https://github.com/Rapptz/discord.py)
 # https://github.com/Rapptz/discord.py/blob/4ccd9c15910e85c178030ed7aa17986e9121b4fb/discord/utils.py#L480-L527
 # The MIT License (MIT)
@@ -117,7 +127,10 @@ def escape_markdown(text):
     return re.sub(regex, replacement, text)
 
 
-# Helper functions for comment formatting
+################################################################################
+# => Helper functions
+################################################################################
+
 def format_comment(comment: dict, is_reply: bool = False) -> str:
     snippet = comment["snippet"]
 

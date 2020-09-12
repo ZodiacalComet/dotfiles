@@ -1,5 +1,9 @@
 config = config  # noqa: F821
 
+######################################################################
+# => URL
+######################################################################
+
 SEARCH_ENGINES = {
     "DEFAULT": "https://duckduckgo.com/?q={}",
     "fimfic": "https://www.fimfiction.net/stories?q={}",

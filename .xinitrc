@@ -1,41 +1,42 @@
 #!/bin/sh
 
+################################################################################
+# => Screen resolution
+################################################################################
+
 # Use external monitor as the primary one
-# Disable laptop's monitor
-# Set resolution to 1024x768
 xrandr --output VGA1 --primary
+# Disable laptop's monitor
 xrandr --output LVDS1 --off
+# Set resolution to 1024x768
 xrandr --output VGA1 --mode 1024x768
 
-# Restore wallpaper
+################################################################################
+# => Before starting WM
+################################################################################
+
+# Restore wallpaper if there was one
 if [ -f ~/wall ]
 then
 	feh --bg-max ~/wall --image-bg 000000
 fi
 
-# Merge .Xresources
 xrdb -merge ~/.Xresources
-
-# Set cursor
 xsetroot -cursor_name left_ptr &
 
-# Start dunst
-dunst &
+#
+# -> Startup applications
+#
 
-# Start flameshot
-flameshot &
+dunst &                         # Notification daemon
+flameshot &                     # Screenshots
+sxhkd &                         # Hotkey daemon
+mpd &                           # Music player daemon
+picom &                         # Compositor
+~/.config/polybar/launch.sh     # Status bar
 
-# Start sxhkd
-sxhkd &
+################################################################################
+# => WM
+################################################################################
 
-# Start mpd
-mpd &
-
-# Start picom
-picom &
-
-# Start polybar
-~/.config/polybar/launch.sh
-
-# Starts BSPWM
 exec bspwm

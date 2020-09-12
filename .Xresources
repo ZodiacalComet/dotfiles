@@ -1,15 +1,13 @@
-
 *.font: JetBrainsMono Nerd Font Mono:style=Bold:size=10
 *.alpha: 0.9
 
-! Theme: MaterialOcean
+! ------------------------------------------------------------------------------
+! => Theme (Material Ocean)
+! ------------------------------------------------------------------------------
+
 ! Got it from: https://github.com/mbadolato/iTerm2-Color-Schemes/blob/master/Xresources/MaterialOcean
 ! On this Github repo: https://github.com/mbadolato/iTerm2-Color-Schemes
 
-!
-! Generated with :
-! XRDB2Xreources.py
-!
 *.foreground:  #8f93a2
 *.background:  #0f111a
 *.cursorColor: #ffffff
@@ -56,10 +54,9 @@
 !*.colorIT:
 !*.colorUL:
 
-
-! -----------------
-!   Dmenu Config
-! -----------------
+! ------------------------------------------------------------------------------
+! => Dmenu
+! ------------------------------------------------------------------------------
 
 dmenu.font: JetBrainsMono Nerd Font Mono:style=Bold:size=13
 dmenu.background: #0f111a
