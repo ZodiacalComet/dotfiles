@@ -26,7 +26,7 @@ dunst &
 flameshot &
 
 # Start sxhkd
-sxhkd ~/.config/sxhkd/other_hotkeys &
+sxhkd &
 
 # Start mpd
 mpd &
