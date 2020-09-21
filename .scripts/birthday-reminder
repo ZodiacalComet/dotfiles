@@ -1,0 +1,227 @@
+#!/usr/bin/env python3
+import argparse
+import csv
+import datetime as dt
+import os
+import subprocess
+
+################################################################################
+# => Xresources
+################################################################################
+
+
+# Function taken from:
+# https://www.qutebrowser.org/doc/help/configuring.html
+def read_xresources(prefix) -> dict:
+    props = {}
+    x = subprocess.run(["xrdb", "-query"], stdout=subprocess.PIPE)
+    lines = x.stdout.decode().split("\n")
+    for line in filter(lambda l: l.startswith(prefix), lines):
+        prop, _, value = line.partition(":\t")
+        props[prop] = value
+    return props
+
+
+# Getting rid of the "*." at the start of the keys
+xresources = dict(
+    map(lambda items: (items[0][2:], items[1]), read_xresources("*").items())
+)
+
+################################################################################
+# => Constants
+################################################################################
+
+# The remaining days a birthday should have to be counted as soon to happen.
+# Type: int
+CLOSE_BITHDAY_DAYS = 14
+
+# The format in which to print the dates.
+# Syntax: https://docs.python.org/3.7/library/datetime.html#strftime-strptime-behavior
+# Type: str
+DATE_FORMAT = "%d %B %Y (%Y-%m-%d)"
+
+# Format in which to print a birthday entry.
+# Placeholders:
+#   - {name}: Name of the person.
+#   - {birth}: Their day of birth.
+#   - {next_birthday}: Their next birthday day.
+#   - {remaining_days}: Amount of days until next their birthday.
+#   - {is_today}: 'Yes' if today is their birthday, 'No' if it is not.
+# Type: str
+BIRTHDAY_FORMAT = "\n".join(
+    [
+        "{name}",
+        "\tToday? {is_today}",
+        "\tBirth: {birth}",
+        "\tNext Birthday: {next_birthday} ({remaining_days} days left)\n",
+    ]
+)
+
+# Day to count as today.
+# Type: datetime.datetime
+NOW = dt.datetime.now()
+
+#
+# -> Polybar Format
+#
+
+
+def bg_fg(text: str, *, bg: str, fg: str) -> str:
+    return "%{{B" + bg + "}}%{{F" + fg + "}}" + text + "%{{B- F-}}"
+
+
+ICON = "%{{T2}}%{{T-}}"
+
+# What to print if there is no birthday that will happen soon.
+# Type: str
+POLYBAR_NO_BIRTHDAY = ""
+
+# What to print if there is at least one birthday happening soon.
+# Placeholders:
+#   {amount}: The amount of birthdays.
+# Type: str
+POLYBAR_CLOSE_BIRTHDAYS = bg_fg(
+    " " + ICON + " {amount} ", bg=xresources["background-alt"], fg=xresources["color7"]
+)  # FG: White
+
+# What to print if there is at least one birthday today.
+# Placeholders:
+#   {amount}: The amount of birthdays.
+# Type: str
+POLYBAR_BIRTHDAY_DAY = bg_fg(
+    " " + ICON + " {amount} ", bg=xresources["color4"], fg=xresources["background"]
+)  # BG: Blue
+
+################################################################################
+# => Objects
+################################################################################
+
+
+class Birthday:
+    def __init__(self, name: str, date: dt.datetime):
+        self.name = name
+        self.birth = date
+
+    def __str__(self):
+        attrs = ["name", "birth", "is_today", "next_birthday", "remaining_days"]
+
+        def _fmt(value):
+            if isinstance(value, dt.datetime):
+                return value.strftime(DATE_FORMAT)
+            elif isinstance(value, bool):
+                return "Yes" if value else "No"
+            return value
+
+        return BIRTHDAY_FORMAT.format(
+            **{attr: _fmt(getattr(self, attr)) for attr in attrs}
+        )
+
+    @property
+    def is_today(self):
+        return self.birth.month == NOW.month and self.birth.day == NOW.day
+
+    @property
+    def next_birthday(self) -> dt.datetime:
+        args = [NOW.year, self.birth.month, self.birth.day]
+        next_birthday = dt.datetime(*args)
+
+        if self.is_today:
+            return next_birthday
+
+        if (next_birthday - NOW).days < 0:
+            args[0] += 1
+            return dt.datetime(*args)
+
+        return next_birthday
+
+    @property
+    def remaining_days(self) -> int:
+        if self.is_today:
+            return 0
+        return (self.next_birthday - NOW).days
+
+
+class BirthdayCollection:
+    def __init__(self, path):
+        self.path = os.path.expanduser(path)
+        self.data = self._load_data()
+
+    def _load_data(self):
+        def _iter():
+            with open(self.path, "r", newline="", encoding="utf-8") as csv_file:
+                reader = csv.DictReader(csv_file)
+
+                for row in reader:
+                    args = map(int, (row["Year"], row["Month"], row["Day"]))
+                    yield Birthday(row["Name"], dt.datetime(*args))
+
+        return list(_iter())
+
+    @property
+    def sorted_birthdays(self) -> list:
+        return sorted(self.data, key=lambda b: b.remaining_days)
+
+    @property
+    def close_birthdays(self) -> list:
+        return list(
+            filter(
+                lambda b: b.remaining_days <= CLOSE_BITHDAY_DAYS, self.sorted_birthdays
+            )
+        )
+
+    @property
+    def today_birthdays(self) -> list:
+        return list(filter(lambda b: b.is_today, self.sorted_birthdays))
+
+    def print_birthday_data(self, *, sorted=False):
+        if not sorted:
+            for birthday in self.data:
+                print(birthday)
+        else:
+            next_birthdays = self.sorted_birthdays
+
+            for birthday in next_birthdays:
+                print(birthday)
+
+    def print_polybar_format(self):
+        close_birthdays = self.close_birthdays
+        if not close_birthdays:
+            print(POLYBAR_NO_BIRTHDAY)
+            return
+
+        today_birthdays = self.today_birthdays
+        if today_birthdays:
+            print(POLYBAR_BIRTHDAY_DAY.format(amount=len(today_birthdays)))
+            return
+
+        print(POLYBAR_CLOSE_BIRTHDAYS.format(amount=len(close_birthdays)))
+
+
+################################################################################
+# => Script interface
+################################################################################
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--polybar", help="Print status in polybar format.", action="store_true",
+    )
+    parser.add_argument(
+        "--sort", help="Sorts the birthdays by remaining days.", action="store_true",
+    )
+    parser.add_argument("csv_file", help="CSV file to read.")
+
+    args = parser.parse_args()
+
+    birthdays = BirthdayCollection(args.csv_file)
+
+    if args.sort and args.polybar:
+        print("Only one option can be used at a time.")
+        exit(1)
+
+    if args.sort:
+        birthdays.print_birthday_data(sorted=True)
+    elif args.polybar:
+        birthdays.print_polybar_format()
+    else:
+        birthdays.print_birthday_data()

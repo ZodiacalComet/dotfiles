@@ -1,0 +1,31 @@
+#!/bin/bash
+
+# Usage: birthday [--polybar] [--show]
+# Simple script to maintain personal birthday polybar module.
+
+BIRTHDAY_SCRIPT=~/.scripts/birthday-reminder
+BIRTHDAY_FILE=~/data/birthdays.csv
+BIRTHDAY_CACHE_FILE=~/.cache/birthday-list
+
+if [[ ! -x $BIRTHDAY_SCRIPT ]]
+then
+    echo "'$BIRTHDAY_SCRIPT' doesn't exist or isn't executable."
+    exit 1
+fi
+
+if [[ ! -f $BIRTHDAY_FILE ]]
+then
+    echo "'$BIRTHDAY_FILE' doesn't exist."
+    exit 1
+fi
+
+case "$1" in
+    --polybar)
+        $BIRTHDAY_SCRIPT --polybar $BIRTHDAY_FILE ;;
+    --show)
+        $BIRTHDAY_SCRIPT --sort $BIRTHDAY_FILE > $BIRTHDAY_CACHE_FILE
+        $TERMINAL -c "Birthday List" $EDITOR $BIRTHDAY_CACHE_FILE ;;
+    *)
+        echo "'$1' is not a valid option for this script."
+        exit 1 ;;
+esac
