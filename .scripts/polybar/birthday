@@ -5,7 +5,7 @@
 
 BIRTHDAY_SCRIPT=~/.scripts/birthday-reminder
 BIRTHDAY_FILE=~/data/birthdays.csv
-BIRTHDAY_CACHE_FILE=~/.cache/birthday-list
+BIRTHDAY_CACHE_FILE=/tmp/birthday-list
 
 if [[ ! -x $BIRTHDAY_SCRIPT ]]
 then

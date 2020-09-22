@@ -17,8 +17,8 @@ like so:
 
 Everything else is obtained using YoutubeDL.
 
-Then everything is stored in `~/.cache/youtube_dl_info.md` in Markdown format,
-which is then opened using grip with the browser option.
+Then everything is stored in `/tmp/youtube_dl_info.md` in Markdown format, which
+is then opened using grip with the browser option.
 
 Requirements:
     - YoutubeDL (https://github.com/ytdl-org/youtube-dl)
@@ -61,7 +61,7 @@ except ModuleNotFoundError:
 YOUTUBE_COMMENT_URL = "https://www.googleapis.com/youtube/v3/commentThreads"
 EDITOR = getenv("EDITOR")
 
-TEMP_FILE = path.expanduser("~/.cache/youtube_dl_info.md")
+TEMP_FILE = "/tmp/youtube_dl_info.md"
 
 if not EDITOR:
     print("The environment variable 'EDITOR' needs to be defined.")
