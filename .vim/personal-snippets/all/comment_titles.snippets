@@ -1,0 +1,49 @@
+global !p
+# {ft: (comment_char, line_expander or None), ...}
+COMMENT_CHARS = {
+	"vim": ('"', None),
+	"dosini": (";;", "-"),
+	"xdefaults": ("!", "-"),
+	"tex": ("%", "-")
+}
+LINE_LENGTH = 80
+SEPARATOR = " "
+
+comment_char, line_expander = COMMENT_CHARS.get(snip.ft, ("#", None))
+
+
+def iter_comment_line():
+	yield comment_char + SEPARATOR
+	count = len(comment_char) + len(SEPARATOR)
+	while count < LINE_LENGTH:
+		for char in line_expander:
+			yield char
+			count += len(char)
+
+			if not count < LINE_LENGTH:
+				break
+
+if line_expander:
+	comment_line = "".join(iter_comment_line())
+else:
+	comment_line = "".join((comment_char for _ in range(LINE_LENGTH)))
+endglobal
+
+snippet cs "Comment Section" b
+`!p snip.rv = comment_line`
+`!p snip.rv = comment_char` => ${1:Section}
+`!p snip.rv = comment_line`
+$0
+endsnippet
+
+snippet css "Comment Sub-Section" b
+`!p snip.rv = comment_char`
+`!p snip.rv = comment_char` -> ${1:Sub-Section}
+`!p snip.rv = comment_char`
+$0
+endsnippet
+
+snippet cc "Comment" b
+`!p snip.rv = comment_char` ${1:Comment}
+$0
+endsnippet

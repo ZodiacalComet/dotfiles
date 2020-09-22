@@ -72,6 +72,7 @@ python3-sphinx
 python3-venv
 qutebrowser
 ranger
+ripgrep
 ruby-full
 spacefm
 sudo
