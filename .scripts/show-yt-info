@@ -131,12 +131,15 @@ def escape_markdown(text):
 # => Helper functions
 ################################################################################
 
-def format_comment(comment: dict, is_reply: bool = False) -> str:
+def fix_newline(text: str) -> str:
+    return text.replace("\n", "\n\n")
+
+def format_comment(comment: dict) -> str:
     snippet = comment["snippet"]
 
     author = escape_markdown(snippet["authorDisplayName"])
     channel_url = snippet["authorChannelUrl"]
-    comment = indent(escape_markdown(snippet["textOriginal"]), "\t")
+    comment = fix_newline(indent(escape_markdown(snippet["textOriginal"]), "\t"))
     publish_timestamp = snippet["publishedAt"].replace("T", " ").replace("Z", "")
     update_timestamp = snippet["updatedAt"].replace("T", " ").replace("Z", "")
 
@@ -156,7 +159,7 @@ def iter_formatted_comments(data: dict):
         if "replies" in item:
             # The comments are in reverse order judging by their timestamp
             for reply in reversed(item["replies"]["comments"]):
-                yield indent(format_comment(reply, is_reply=True), "  ")
+                yield indent(format_comment(reply), "  ")
 
         yield "\n* * * * *\n"
 
@@ -176,7 +179,7 @@ if __name__ == "__main__":
         f"By: **[{escape_markdown(yt_dl_data['uploader'])}]({yt_dl_data['channel_url']})**",
         f"![Thumbnail]({yt_dl_data['thumbnail']})",
         f"\n## Description",
-        escape_markdown(yt_dl_data["description"].replace("\n", "\n\n")),
+        fix_newline(escape_markdown(yt_dl_data["description"])),
         "\n## Comments",
     ]
 
