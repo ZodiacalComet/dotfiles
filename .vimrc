@@ -110,6 +110,7 @@ map <leader>ch :noh<CR>
 "
 
 autocmd BufRead,BufNewFile *.md setlocal spell
+autocmd BufRead,BufNewFile COMMIT_EDITMSG setlocal spell
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Ale
