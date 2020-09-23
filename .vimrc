@@ -68,8 +68,16 @@ set spelllang=en_us,es
 set background=dark
 colorscheme delek
 
+"
+" -> Highlight
+"
+
 highlight LineNr ctermfg=Yellow
 highlight CursorLineNr ctermfg=Blue
+
+" I like it more when it's underlined red *shrug*
+highlight clear SpellBad
+highlight SpellBad term=underline cterm=underline ctermfg=9
 
 "
 " -> Mappings
