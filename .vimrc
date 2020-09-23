@@ -276,9 +276,14 @@ let g:python_highlight_operators = 1
 " => Vim Markdown
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:vim_markdown_folding_disabled = 1
+let g:vim_markdown_toc_autofit = 1
 
 let g:vim_markdown_frontmatter = 1
 let g:vim_markdown_math = 1
 let g:vim_markdown_strikethrough = 1
 
 let g:vim_markdown_conceal_code_blocks = 0
+
+let g:vim_markdown_follow_anchor = 1
+let g:vim_markdown_no_extensions_in_markdown = 1
+let g:vim_markdown_autowrite = 1
