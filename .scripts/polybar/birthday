@@ -21,9 +21,9 @@ case "$1" in
         $BIRTHDAY_SCRIPT --polybar ;;
     --show)
         $BIRTHDAY_SCRIPT --sort > $BIRTHDAY_TEMP_FILE
-        floating_terminal $EDITOR $BIRTHDAY_TEMP_FILE ;;
+        floating_terminal $EDITOR $BIRTHDAY_TEMP_FILE & ;;
     --edit)
-        floating_terminal $BIRTHDAY_SCRIPT --edit ;;
+        floating_terminal $BIRTHDAY_SCRIPT --edit & ;;
     *)
         echo "'$1' is not a valid option for this script."
         exit 1 ;;
