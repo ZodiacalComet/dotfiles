@@ -35,4 +35,4 @@ bspc config focused_border_color  "$(get_color color4)"
 
 bspc rule -a mpv desktop='^5' follow=on
 bspc rule -a MEGAsync state=floating # rectangle=300x500+610+25
-bspc rule -a "Birthday List" state=floating center=on
+bspc rule -a "Floating Terminal" state=floating center=on

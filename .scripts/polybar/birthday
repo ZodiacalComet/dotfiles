@@ -1,11 +1,10 @@
 #!/bin/bash
 
-# Usage: birthday [--polybar] [--show]
+# Usage: birthday [--polybar] [--show] [--edit]
 # Simple script to maintain personal birthday polybar module.
 
 BIRTHDAY_SCRIPT=~/.scripts/birthday-reminder
-BIRTHDAY_FILE=~/data/birthdays.csv
-BIRTHDAY_CACHE_FILE=/tmp/birthday-list
+BIRTHDAY_TEMP_FILE=/tmp/birthday-list
 
 if [[ ! -x $BIRTHDAY_SCRIPT ]]
 then
@@ -13,18 +12,18 @@ then
     exit 1
 fi
 
-if [[ ! -f $BIRTHDAY_FILE ]]
-then
-    echo "'$BIRTHDAY_FILE' doesn't exist."
-    exit 1
-fi
+function floating_terminal() {
+    $TERMINAL -c "Floating Terminal" $*
+}
 
 case "$1" in
     --polybar)
-        $BIRTHDAY_SCRIPT --polybar $BIRTHDAY_FILE ;;
+        $BIRTHDAY_SCRIPT --polybar ;;
     --show)
-        $BIRTHDAY_SCRIPT --sort $BIRTHDAY_FILE > $BIRTHDAY_CACHE_FILE
-        $TERMINAL -c "Birthday List" $EDITOR $BIRTHDAY_CACHE_FILE ;;
+        $BIRTHDAY_SCRIPT --sort > $BIRTHDAY_TEMP_FILE
+        floating_terminal $EDITOR $BIRTHDAY_TEMP_FILE ;;
+    --edit)
+        floating_terminal $BIRTHDAY_SCRIPT --edit ;;
     *)
         echo "'$1' is not a valid option for this script."
         exit 1 ;;

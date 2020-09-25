@@ -2,6 +2,7 @@
 import argparse
 import csv
 import datetime as dt
+import itertools as it
 import os
 import subprocess
 
@@ -30,6 +31,16 @@ xresources = dict(
 ################################################################################
 # => Constants
 ################################################################################
+
+# Editor command to execute on birthday file when the flag --edit is used.
+# Type: str
+EDITOR = os.getenv("EDITOR", "vim")
+
+# Birthday CSV file locations
+# Type: str
+BIRTHDAY_FILE = os.path.expanduser(
+    os.getenv("XDG_DATA_HOME", "~/.local/share") + "/birthday-reminder/birthdays.csv"
+)
 
 # The remaining days a birthday should have to be counted as soon to happen.
 # Type: int
@@ -74,7 +85,9 @@ ICON = "%{{T2}}%{{T-}}"
 
 # What to print if there is no birthday that will happen soon.
 # Type: str
-POLYBAR_NO_BIRTHDAY = ""
+POLYBAR_NO_BIRTHDAY = bg_fg(
+    " " + ICON + " ", bg=xresources["background-alt"], fg=xresources["color7"]
+)  # FG: White
 
 # What to print if there is at least one birthday happening soon.
 # Placeholders:
@@ -144,6 +157,7 @@ class Birthday:
 class BirthdayCollection:
     def __init__(self, path):
         self.path = os.path.expanduser(path)
+        self.ensure_path_exists()
         self.data = self._load_data()
 
     def _load_data(self):
@@ -156,6 +170,17 @@ class BirthdayCollection:
                     yield Birthday(row["Name"], dt.datetime(*args))
 
         return list(_iter())
+
+    def ensure_path_exists(self):
+        if os.path.isfile(self.path):
+            return
+
+        try:
+            os.mkdir(os.path.dirname(self.path))
+        except FileExistsError:
+            pass
+
+        os.system(f"touch {self.path}")
 
     @property
     def sorted_birthdays(self) -> list:
@@ -186,7 +211,7 @@ class BirthdayCollection:
     def print_polybar_format(self):
         close_birthdays = self.close_birthdays
         if not close_birthdays:
-            print(POLYBAR_NO_BIRTHDAY)
+            print(POLYBAR_NO_BIRTHDAY.format())
             return
 
         today_birthdays = self.today_birthdays
@@ -209,19 +234,26 @@ if __name__ == "__main__":
     parser.add_argument(
         "--sort", help="Sorts the birthdays by remaining days.", action="store_true",
     )
-    parser.add_argument("csv_file", help="CSV file to read.")
+    parser.add_argument(
+        "--edit", help="Open birthday file with EDITOR.", action="store_true"
+    )
 
     args = parser.parse_args()
 
-    birthdays = BirthdayCollection(args.csv_file)
+    birthdays = BirthdayCollection(BIRTHDAY_FILE)
 
-    if args.sort and args.polybar:
-        print("Only one option can be used at a time.")
-        exit(1)
+    # Checking if more than one options is used.
+    # Still seems like a little TOO much bringing itertools for this
+    for pair in it.combinations([args.sort, args.polybar, args.edit], 2):
+        if pair[0] and pair[1]:
+            print("Only one option can be used at a time.")
+            exit(1)
 
     if args.sort:
         birthdays.print_birthday_data(sorted=True)
     elif args.polybar:
         birthdays.print_polybar_format()
+    elif args.edit:
+        os.system(f"{EDITOR} '{BIRTHDAY_FILE}'")
     else:
         birthdays.print_birthday_data()
