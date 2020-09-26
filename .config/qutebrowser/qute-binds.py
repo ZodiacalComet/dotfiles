@@ -21,3 +21,8 @@ config.bind(
     "<Ctrl-i>",
     f"hint links spawn --detach {TERM} {show_yt_info_script}" + " {hint-url}",
 )
+
+# Open reddit page
+config.bind(
+    "prc", f"hint links spawn --detach {TERM} tuir" + " {hint-url}"
+)
