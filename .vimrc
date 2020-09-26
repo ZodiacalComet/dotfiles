@@ -23,6 +23,8 @@ Plug 'vim-python/python-syntax'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 
+Plug 'mhinz/vim-startify'
+
 call plug#end()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -260,6 +262,8 @@ let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 let g:indentLine_leadingSpaceChar='·'
 let g:indentLine_leadingSpaceEnabled='1'
 
+let g:indentLine_bufNameExclude=['startify']
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Python-syntax
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -288,3 +292,43 @@ let g:vim_markdown_conceal_code_blocks = 0
 let g:vim_markdown_follow_anchor = 1
 let g:vim_markdown_no_extensions_in_markdown = 1
 let g:vim_markdown_autowrite = 1
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Startify
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:startify_session_dir = '~/.vim/session'
+
+let g:startify_lists = [
+\{ 'type': 'bookmarks', 'header': ['   Bookmarks']      },
+\{ 'type': 'files',     'header': ['   MRU']            },
+\{ 'type': 'dir',       'header': ['   MRU '. getcwd()] },
+\{ 'type': 'sessions',  'header': ['   Sessions']       },
+\{ 'type': 'commands',  'header': ['   Commands']       },
+\]
+
+let g:startify_bookmarks = [
+\   {'v': '~/.vimrc'},
+\   {'n': '~/Notes/index.md'},
+\   {'c': '~/.config'},
+\]
+
+let g:startify_custom_header = startify#pad([
+\   '    ___                       ___     ',
+\   '   /\__\          ___        /\__\    ',
+\   '  /:/  /         /\  \      /::|  |   ',
+\   ' /:/  /          \:\  \    /:|:|  |   ',
+\   '/:/__/  ___      /::\__\  /:/|:|__|__ ',
+\   '|:|  | /\__\  __/:/\/__/ /:/ |::::\__\',
+\   '|:|  |/:/  / /\/:/  /    \/__/~~/:/  /',
+\   '|:|__/:/  /  \::/__/           /:/  / ',
+\   ' \::::/__/    \:\__\          /:/  /  ',
+\   '  ~~~~         \/__/         /:/  /   ',
+\   '                             \/__/    ',
+\])
+
+let g:startify_change_to_dir = 1
+let g:startify_change_to_vcs_root = 1
+
+let g:startify_session_autoload = 1
+let g:startify_session_delete_buffers = 1
+let g:startify_session_persistence = 1
