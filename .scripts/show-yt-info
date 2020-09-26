@@ -10,8 +10,9 @@ Python script for showing information of a Youtube URL, such as:
     - Comments
 
 Uses the Youtube API V3 to get some comments from the given video, making it a
-requirement for running this script. Said key needs to be in `~/.secret/secret.py`
-like so:
+requirement for running this script. Said key needs to be in
+`$XDG_CONFIG_HOME/scripts/settings.py` or `~/.config/scripts/settings.py` like
+so:
 
     YT_API_KEY = 'secret-key-here'
 
@@ -71,7 +72,8 @@ if not EDITOR:
 # -> Importing secret key
 #
 
-SECRET_FILE_PATH = path.expanduser("~/.secret/secret.py")
+CONFIG_DIR = path.expanduser(getenv("XDG_CONFIG_HOME", "~/.config"))
+SECRET_FILE_PATH = (CONFIG_DIR + "/scripts/settings.py")
 # Getting rid of the ".py" at the end
 SECRET_FILE = path.split(SECRET_FILE_PATH)[1][:-3]
 SECRET_EXAMPLE_LINE = "  YT_API_KEY = 'secret-key-here'"

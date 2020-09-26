@@ -16,12 +16,12 @@ xrandr --output VGA1 --mode 1024x768
 ################################################################################
 
 # Restore wallpaper if there was one
-if [ -f ~/wall ]
+if [ -f "$WALLPAPER_PATH" ]
 then
-	feh --bg-max ~/wall --image-bg 000000
+	feh --no-fehbg --bg-max "$WALLPAPER_PATH" --image-bg 000000
 fi
 
-xrdb -merge ~/.Xresources
+xrdb -merge ~/.config/X11/Xresources
 xsetroot -cursor_name left_ptr &
 
 #

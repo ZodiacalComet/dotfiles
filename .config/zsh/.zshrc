@@ -2,8 +2,8 @@
 # => Powerlevel10k prompt
 ################################################################################
 
-source ~/.powerlevel10k/powerlevel10k.zsh-theme
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+source "$ZDOTDIR/powerlevel10k/powerlevel10k.zsh-theme"
+[[ ! -f "$ZDOTDIR/.p10k.zsh" ]] || source "$ZDOTDIR/.p10k.zsh"
 
 ################################################################################
 # => Environment variables
@@ -17,18 +17,13 @@ function add_to_path() {
     fi
 }
 
-add_to_path "$HOME/.cargo/bin"
-add_to_path "$HOME/.poetry/bin"
+add_to_path "$CARGO_HOME/bin"
+add_to_path "$POETRY_HOME/bin"
 add_to_path "$HOME/.local/bin"
-
-export XDG_CONFIG_HOME="$HOME/.config"
-
-# Personal scripts to expose
 add_to_path "$HOME/.scripts/bin"
-
-# Gem installation directory
-export GEM_HOME="$HOME/gems"
-add_to_path "$HOME/gems/bin"
+add_to_path "$GEM_HOME/bin"
+add_to_path "/usr/local/go/bin"
+add_to_path "$GOPATH/bin"
 
 export MANPAGER="/bin/sh -c \"col -b | vim --not-a-term -c 'set ft=man ts=8 nomod nolist noma' -\""
 
@@ -44,6 +39,8 @@ alias lcxa="lcx -a"
 
 alias vi="vim"
 alias nc="ncmpcpp"
+
+alias wget="wget --hsts-file='$XDG_CACHE_HOME/wget-hsts'"
 
 #
 # -> YoutubeDL

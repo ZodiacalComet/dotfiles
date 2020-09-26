@@ -34,7 +34,7 @@ else
     exit
 fi
 
-# Make wallpaper to be set at startup by ~/.xinitrc
-cp $IMG ~/wall
+# Make wallpaper to be set at startup
+cp $IMG $WALLPAPER_PATH
 
-feh --bg-max $IMG --image-bg 000000
+feh --no-fehbg --bg-max $IMG --image-bg 000000

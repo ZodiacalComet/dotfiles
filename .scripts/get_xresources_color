@@ -19,18 +19,18 @@ them until it finds the one that matches the given argument and prints it.
 For now, its existence is for being able to get those values inside
 ~/.config/bspwm/bspwmrc
 """
-from pathlib import Path
 from sys import argv
+from os import path
 
 if len(argv) == 1:
     exit()
 
 
 COLOR_TO_GET = argv[1]
-X_FILE = Path.home() / ".Xresources"
+XRESOURCES_FILE = path.expanduser("~/.config/X11/Xresources")
 
 
-with X_FILE.open("r", encoding="utf-8") as f:
+with open(XRESOURCES_FILE, "r", encoding="utf-8") as f:
     content = f.read()
 
 
