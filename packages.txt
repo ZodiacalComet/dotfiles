@@ -74,10 +74,10 @@ qutebrowser
 ranger
 ripgrep
 ruby-full
-spacefm
 sudo
 sxhkd
 sxiv
+thunar
 unzip
 uthash-dev
 vainfo
