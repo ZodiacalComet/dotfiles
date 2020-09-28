@@ -105,7 +105,7 @@ map <leader>w :w<CR>
 map <leader>ss :setlocal spell!<CR>
 
 " Clear highligting
-map <leader>ch :noh<CR>
+map <leader>/ :noh<CR>
 
 "
 " -> Autocmd
