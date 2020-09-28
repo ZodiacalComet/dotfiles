@@ -89,7 +89,7 @@ except ModuleNotFoundError:
     exit(1)
 except AttributeError:
     print(
-        f"YT_API_KEY is not defined in '{SECRET_FILE_PATH}'."
+        f"YT_API_KEY is not defined in '{SECRET_FILE_PATH}'. "
         + "Be sure that the following line is in there:\n"
         + SECRET_EXAMPLE_LINE,
     )
