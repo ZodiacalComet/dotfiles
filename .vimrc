@@ -65,6 +65,9 @@ set wrap
 set conceallevel=2
 set concealcursor=""
 
+" A smooth line for vertical splits
+set fillchars+=vert:│
+
 set spelllang=en_us,es
 
 set background=dark
@@ -80,6 +83,10 @@ highlight CursorLineNr ctermfg=Blue
 " I like it more when it's underlined red *shrug*
 highlight clear SpellBad
 highlight SpellBad term=underline cterm=underline ctermfg=9
+
+" Make vertical splits be less of an eyesore
+highlight clear VertSplit
+highlight VertSplit term=bold ctermfg=White
 
 "
 " -> Mappings
