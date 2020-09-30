@@ -1,0 +1,102 @@
+#!/usr/bin/env python3
+import argparse
+import io
+import sys
+
+from PIL import Image, ImageDraw, ImageFont
+
+TRANSPARENT = (0, 0, 0, 0)
+CREATION_PADDING = (5, 5)
+
+
+def ensure_str(io_or_str) -> str:
+    if isinstance(io_or_str, io.TextIOWrapper):
+        text = io_or_str.read()
+        io_or_str.close()
+        return text.rstrip()
+
+    return io_or_str
+
+
+def crop_image(image, padding=(0, 0)):
+    bbox = image.convert("RGBa").getbbox()
+    image = image.crop(bbox)
+    width, length = image.size
+
+    width += padding[0] * 2
+    length += padding[1] * 2
+
+    cropped_image = Image.new("RGBA", (width, length), TRANSPARENT)
+    cropped_image.paste(
+        image, (padding[0], padding[1], width - padding[0], length - padding[1])
+    )
+
+    return cropped_image
+
+
+################################################################################
+# => Script interface
+################################################################################
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(
+        description="Script to convert text to an image with transparent background."
+    )
+    parser.add_argument(
+        "--canvas",
+        nargs=2,
+        default=[1000, 1000],
+        type=int,
+        metavar=("X", "Y"),
+        help="Sets the canvas size.",
+    )
+    parser.add_argument("--font", type=str, required=True, help="Select font to use")
+    parser.add_argument(
+        "--font-size", default=500, type=int, help="Sets the font size to use."
+    )
+    parser.add_argument(
+        "--foreground",
+        nargs=4,
+        default=[0, 0, 0, 255],
+        type=int,
+        metavar=("R", "G", "B", "A"),
+        help="Sets the foreground color.",
+    )
+    parser.add_argument(
+        "--padding",
+        nargs=2,
+        default=[5, 5],
+        type=int,
+        metavar=("X", "Y"),
+        help="Spacing between the text and the border of the image.",
+    )
+    parser.add_argument(
+        "-o",
+        "--output",
+        default="output.png",
+        type=str,
+        metavar="FILENAME",
+        help="Filename of the image to generate.",
+    )
+    parser.add_argument(
+        "text",
+        nargs="?",
+        default=sys.stdin,
+        type=str,
+        metavar="TEXT",
+        help="Text to convert.",
+    )
+
+    args = parser.parse_args()
+
+    text = ensure_str(args.text)
+    canvas = tuple(args.canvas)
+    foreground = tuple(args.foreground)
+    font = ImageFont.truetype(args.font, size=args.font_size)
+    padding = tuple(args.padding)
+
+    im = Image.new("RGBA", canvas, TRANSPARENT)
+    draw = ImageDraw.Draw(im, mode="RGBA")
+    draw.text(CREATION_PADDING, text, fill=foreground, font=font)
+
+    crop_image(im, padding).save(args.output)
