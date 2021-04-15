@@ -58,6 +58,7 @@ mpd
 mpv
 ncmpcpp
 neofetch
+network-manager-gnome
 newsboat
 ninja-build
 pandoc

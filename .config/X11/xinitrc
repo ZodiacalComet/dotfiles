@@ -33,6 +33,7 @@ flameshot &                     # Screenshots
 sxhkd &                         # Hotkey daemon
 mpd &                           # Music player daemon
 picom &                         # Compositor
+nm-applet &                     # NetworkManager System Tray Applet
 ~/.config/polybar/launch.sh     # Status bar
 
 ################################################################################
