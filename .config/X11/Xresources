@@ -8,9 +8,9 @@
 ! Got it from: https://github.com/mbadolato/iTerm2-Color-Schemes/blob/master/Xresources/MaterialOcean
 ! On this Github repo: https://github.com/mbadolato/iTerm2-Color-Schemes
 
-*.foreground:  #8f93a2
+*.foreground:  #ffffff
 *.background:  #0f111a
-*.cursorColor: #ffffff
+*.cursorColor: #8f93a2
 
 !
 ! Alt (Added)
