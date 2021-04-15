@@ -18,7 +18,7 @@ add_to_path "$GEM_HOME/bin"
 add_to_path "/usr/local/go/bin"
 add_to_path "$GOPATH/bin"
 
-export MANPAGER="/bin/sh -c \"col -b | vim --not-a-term -c 'set ft=man ts=8 nomod nolist noma' -\""
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
 ################################################################################
 # => Aliases
