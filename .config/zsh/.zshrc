@@ -6,7 +6,7 @@ export PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games"
 
 function add_to_path() {
     if [[ -d "$1" ]] ; then
-        export PATH="$PATH:$1"
+        export PATH="$1:$PATH"
     fi
 }
 
