@@ -12,6 +12,7 @@ function add_to_path() {
 
 add_to_path "$CARGO_HOME/bin"
 add_to_path "$POETRY_HOME/bin"
+add_to_path "$XDG_DATA_HOME/npm/bin"
 add_to_path "$HOME/.local/bin"
 add_to_path "$HOME/.scripts/bin"
 add_to_path "$GEM_HOME/bin"
