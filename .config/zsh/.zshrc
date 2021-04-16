@@ -35,6 +35,8 @@ alias nc="ncmpcpp"
 
 alias wget="wget --hsts-file='$XDG_CACHE_HOME/wget-hsts'"
 
+alias cat="bat"
+
 #
 # -> YoutubeDL
 #
