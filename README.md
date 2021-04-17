@@ -32,3 +32,8 @@ alias dot="git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 dot checkout
 dot config status.showUntrackedFiles no
 ```
+
+# Notes
+
+- Install [KeepassXC from snap](https://snapcraft.io/keepassxc), since it has the latest unlike the Debian repos.
+- Install [node from snap](https://snapcraft.io/node), they have the most recent versions available for the i386 architecture.

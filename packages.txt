@@ -74,6 +74,7 @@ qutebrowser
 ranger
 ripgrep
 ruby-full
+snapd
 sudo
 sxhkd
 sxiv
