@@ -1,0 +1,30 @@
+#!/bin/bash
+
+# Exit if there is already a WM running
+pgrep bspwm > /dev/null && exit
+
+X11="$XDG_CONFIG_HOME/X11"
+PROMPT="Select a WM to start"
+
+press_enter() {
+  echo ""
+  echo -n "Press Enter to continue "
+  read
+  clear
+}
+
+until [ "$selection" = "0" ]; do
+  clear
+  echo ""
+  echo "   1  -  bspwm"
+  echo "   0  -  Stay in tty"
+  echo ""
+  echo -n "$PROMPT: "
+  read selection
+  echo ""
+  case $selection in
+    1 ) clear ; echo "Starting bspwm..." ; startx "$X11/bspwm" ;;
+    0 ) clear ; exit ;;
+    * ) clear ; echo "Not a valid selection!" ; press_enter ;;
+  esac
+done
