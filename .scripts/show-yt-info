@@ -1,47 +1,10 @@
 #!/usr/bin/env python3
-"""
-Usage: show-yt-info [URL]
-
-Python script for showing information of a Youtube URL, such as:
-    - Title
-    - Uploader Channel
-    - Thumbnail
-    - Desciption
-    - Comments
-
-Uses the Youtube API V3 to get some comments from the given video, making it a
-requirement for running this script. Said key needs to be in
-`$XDG_CONFIG_HOME/scripts/settings.py` or `~/.config/scripts/settings.py` like
-so:
-
-    YT_API_KEY = 'secret-key-here'
-
-Everything else is obtained using YoutubeDL.
-
-Then everything is stored in `/tmp/youtube_dl_info.md` in Markdown format, which
-is then opened using grip with the browser option.
-
-Requirements:
-    - YoutubeDL (https://github.com/ytdl-org/youtube-dl)
-        For the way that I have my system set up, this was installed using pipx,
-        reason as to why searches in an specific path for it. Though it should
-        work if it is found in the main site-packages folder.
-    - requests (https://github.com/psf/requests)
-        Needs to be in main site-packages folder.
-    - grip (https://github.com/joeyespo/grip)
-        Can be installed using pip or pipx, doesn't really matter.
-    - A Youtube API V3 key, get it from: http://code.google.com/apis/console
-"""
+import os
 import re
 import sys
-from os import getenv, path
-from os import system as execute_cmd
-from textwrap import indent
-
-import requests
 
 # Importing youtube_dl from pipx virtual environment
-YOUTUBEDL_PIPX_SITE_PACKAGES = path.expanduser(
+YOUTUBEDL_PIPX_SITE_PACKAGES = os.path.expanduser(
     "~/.local/pipx/venvs/youtube-dl/lib/python3.7/site-packages"
 )
 try:
@@ -49,9 +12,26 @@ try:
     from youtube_dl import YoutubeDL
 except ModuleNotFoundError:
     print(
-        "YoutubeDL not found.\n"
-        + "Make sure that the following path exists and that youtube-dl is there:\n"
-        + YOUTUBEDL_PIPX_SITE_PACKAGES
+        "YoutubeDL not found.",
+        "Make sure that the following path exists and that youtube-dl is there:",
+        YOUTUBEDL_PIPX_SITE_PACKAGES,
+        sep="\n",
+    )
+    exit(1)
+
+# Importing grip from pipx virtual environment
+GRIP_PIPX_SITE_PACKAGES = os.path.expanduser(
+    "~/.local/pipx/venvs/grip/lib/python3.7/site-packages"
+)
+try:
+    sys.path.insert(0, GRIP_PIPX_SITE_PACKAGES)
+    import grip
+except ModuleNotFoundError:
+    print(
+        "Grip not found.",
+        "Make sure that the following path exists and that grip is there:",
+        GRIP_PIPX_SITE_PACKAGES,
+        sep="\n",
     )
     exit(1)
 
@@ -59,48 +39,35 @@ except ModuleNotFoundError:
 # => Constants
 ################################################################################
 
-YOUTUBE_COMMENT_URL = "https://www.googleapis.com/youtube/v3/commentThreads"
-EDITOR = getenv("EDITOR")
+USAGE = "Usage: show-yt-info [-h] [URL]"
+HELP = """
+Python script for showing information of a Youtube URL, such as:
+    - Title
+    - Uploader Channel
+    - Thumbnail
+    - Desciption
+
+Everything is obtained using YoutubeDL, storing it in `/tmp/youtube_dl_info.md` in
+Markdown format, which is then opened using grip with the browser option.
+
+Requirements:
+    - YoutubeDL (https://github.com/ytdl-org/youtube-dl)
+    - grip (https://github.com/joeyespo/grip)
+        For the way that I have my system set up, both were installed using pipx,
+        reason as to why searches in an specific path for it. Though it should
+        work if it is found in the main site-packages folder.
+""".strip()
 
 TEMP_FILE = "/tmp/youtube_dl_info.md"
-
-if not EDITOR:
-    print("The environment variable 'EDITOR' needs to be defined.")
-    exit(1)
-
-#
-# -> Importing secret key
-#
-
-CONFIG_DIR = path.expanduser(getenv("XDG_CONFIG_HOME", "~/.config"))
-SECRET_FILE_PATH = (CONFIG_DIR + "/scripts/settings.py")
-# Getting rid of the ".py" at the end
-SECRET_FILE = path.split(SECRET_FILE_PATH)[1][:-3]
-SECRET_EXAMPLE_LINE = "  YT_API_KEY = 'secret-key-here'"
-
-try:
-    sys.path.insert(0, path.dirname(SECRET_FILE_PATH))
-    KEY = __import__(SECRET_FILE).YT_API_KEY
-except ModuleNotFoundError:
-    print(
-        f"The file '{SECRET_FILE_PATH}' needs to exist with the following content:\n"
-        + SECRET_EXAMPLE_LINE
-    )
-    exit(1)
-except AttributeError:
-    print(
-        f"YT_API_KEY is not defined in '{SECRET_FILE_PATH}'. "
-        + "Be sure that the following line is in there:\n"
-        + SECRET_EXAMPLE_LINE,
-    )
-    exit(1)
 
 ################################################################################
 # => Escape markdown function
 ################################################################################
 
-# Function taken from the discord.py python module (https://github.com/Rapptz/discord.py)
+# Function taken from the discord.py python module
+# Github repo: https://github.com/Rapptz/discord.py
 # https://github.com/Rapptz/discord.py/blob/4ccd9c15910e85c178030ed7aa17986e9121b4fb/discord/utils.py#L480-L527
+#
 # The MIT License (MIT)
 # Copyright (c) 2015-2020 Rapptz
 _MARKDOWN_ESCAPE_SUBREGEX = "|".join(
@@ -133,43 +100,19 @@ def escape_markdown(text):
 # => Helper functions
 ################################################################################
 
+
 def fix_newline(text: str) -> str:
     return text.replace("\n", "\n\n")
-
-def format_comment(comment: dict) -> str:
-    snippet = comment["snippet"]
-
-    author = escape_markdown(snippet["authorDisplayName"])
-    channel_url = snippet["authorChannelUrl"]
-    comment = fix_newline(indent(escape_markdown(snippet["textOriginal"]), "\t"))
-    publish_timestamp = snippet["publishedAt"].replace("T", " ").replace("Z", "")
-    update_timestamp = snippet["updatedAt"].replace("T", " ").replace("Z", "")
-
-    timestamp = f"({publish_timestamp})" + (
-        f" **|** *Edited at: {update_timestamp}*"
-        if not publish_timestamp == update_timestamp
-        else ""
-    )
-
-    return "\n\n".join([f"- **[{author}]({channel_url})** {timestamp}", comment])
-
-
-def iter_formatted_comments(data: dict):
-    for item in data["items"]:
-        yield format_comment(item["snippet"]["topLevelComment"])
-
-        if "replies" in item:
-            # The comments are in reverse order judging by their timestamp
-            for reply in reversed(item["replies"]["comments"]):
-                yield indent(format_comment(reply), "  ")
-
-        yield "\n* * * * *\n"
 
 
 if __name__ == "__main__":
     if len(sys.argv) == 1:
-        print("Need a Youtube URL to extract info from.")
+        print(USAGE, "Need a Youtube URL to extract info from.", sep="\n")
         exit(1)
+
+    if sys.argv[1] in ["-h", "--help"]:
+        print(USAGE, HELP, sep="\n\n")
+        exit()
 
     URL = sys.argv[1]
 
@@ -180,22 +123,16 @@ if __name__ == "__main__":
         f"# [{escape_markdown(yt_dl_data['title'])}]({yt_dl_data['webpage_url']})",
         f"By: **[{escape_markdown(yt_dl_data['uploader'])}]({yt_dl_data['channel_url']})**",
         f"![Thumbnail]({yt_dl_data['thumbnail']})",
-        f"\n## Description",
+        "\n## Description",
         fix_newline(escape_markdown(yt_dl_data["description"])),
-        "\n## Comments",
     ]
-
-    params = {
-        "part": "snippet,replies",
-        "maxResults": 50,
-        "videoId": yt_dl_data["id"],
-        "key": KEY,
-    }
-
-    yt_api_data = requests.get(YOUTUBE_COMMENT_URL, params=params).json()
-    content_in_list.extend(iter_formatted_comments(yt_api_data))
 
     with open(TEMP_FILE, "w", encoding="utf-8") as fd:
         fd.write("\n\n".join(content_in_list))
 
-    execute_cmd(f"grip -b '{TEMP_FILE}'")
+    grip.serve(
+        path=TEMP_FILE,
+        title="Grip - Youtube Show Info",
+        autorefresh=False,
+        browser=True,
+    )
