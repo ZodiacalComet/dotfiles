@@ -44,9 +44,9 @@ super + F1
 super + F2
 	~/.scripts/change-keyboard-layout
 
-# Open in chromium menu
+# Open application menu
 super + F3
-	~/.scripts/open-in-chromium
+	~/.scripts/app-menu
 
 ################################################################################
 # => Bspwm

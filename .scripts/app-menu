@@ -1,0 +1,64 @@
+#!/bin/bash
+
+MENU_ICON=""
+GRAPHICAL_ICON=""
+TERMINAL_ICON=""
+
+dmchoose() {
+	echo "$1" | tr "|" "\n" | dmenu -i -c -l 5 -bw 4 -p "Choose: "
+}
+
+open_in_term() {
+	$TERMINAL "$*"
+}
+
+browser-menu() {
+	FIREFOX_AGGRESSIVE=" Firefox (Aggressive settings)"
+	FIREFOX=" Firefox (Not so aggressive settings)"
+	QUTEBROWSER="$GRAPHICAL_ICON Qutebrowser"
+
+	OPTIONS="$FIREFOX_AGGRESSIVE|$FIREFOX|$QUTEBROWSER"
+	CHOICE="$(dmchoose "$OPTIONS")"
+
+	case "$CHOICE" in
+		$FIREFOX) /usr/bin/firefox-esr -P default-esr ;;
+		$FIREFOX_AGGRESSIVE) /usr/bin/firefox-esr -P aggressive-privacy-settings ;;
+		$QUTEBROWSER) /usr/bin/qutebrowser ;;
+	esac
+}
+
+filemanager-menu() {
+	THUNAR="$GRAPHICAL_ICON Thunar"
+	RANGER="$TERMINAL_ICON Ranger"
+
+	OPTIONS="$THUNAR|$RANGER"
+	CHOICE="$(dmchoose "$OPTIONS")"
+
+	case "$CHOICE" in
+		$THUNAR) /usr/bin/thunar ;;
+		$RANGER) open_in_term /usr/bin/ranger ;;
+	esac
+}
+
+BROWSER="$MENU_ICON Browser"
+FILEMANAGER="$MENU_ICON File Manager"
+KEEPASS="ﳳ KeepassXC"
+YOUTUBE=" Youtube Viewer"
+MUSIC=" NCMPCPP"
+RSS=" Newsboat"
+REDDIT=" TUIR"
+DISCORD="ﭮ Discord"
+
+OPTIONS="$BROWSER|$FILEMANAGER|$KEEPASS|$YOUTUBE|$MUSIC|$RSS|$REDDIT|$DISCORD"
+CHOICE="$(echo "$OPTIONS" | tr "|" "\n" | dmenu -i -c -l 10 -bw 4 -p "App Menu: ")"
+
+case "$CHOICE" in
+	$BROWSER) browser-menu ;;
+	$FILEMANAGER) filemanager-menu ;;
+	$KEEPASS) /snap/bin/keepassxc ;;
+	$YOUTUBE) open_in_term /usr/local/bin/youtube-viewer ;;
+	$MUSIC) open_in_term /usr/bin/ncmpcpp ;;
+	$RSS) open_in_term /usr/bin/newsboat ;;
+	$REDDIT) open_in_term $HOME/.local/bin/tuir ;;
+	$DISCORD) /usr/bin/chromium --app="https://www.discord.com/app" ;;
+esac
