@@ -1,7 +1,13 @@
 from os import getenv
-from pathlib import Path
 
 config = config  # noqa: F821
+
+TERM = getenv("TERMINAL", "st")
+
+
+def hint_spawn_cmd(cmd: str) -> str:
+    return f"hint links spawn --detach {TERM} {cmd} {{hint-url}}"
+
 
 ######################################################################
 # => Bidings
@@ -10,16 +16,20 @@ config = config  # noqa: F821
 # Reload config
 config.bind("<Ctrl-r>", "config-source")
 
-# Spawn mpv on selected url with hint
-config.bind("<Ctrl-p>", "hint links spawn --detach mpv {hint-url}")
+# Play video using youtube-viewer
+config.bind("<Ctrl-p>", hint_spawn_cmd("youtube-viewer"))
 
-# Spawn show-yt-info script on TERMINAL
-TERM = getenv("TERMINAL", "st")
-show_yt_info_script = str(Path.home() / ".scripts" / "show-yt-info")
+# Show comments on a video using youtube-viewer
 config.bind(
-    "<Ctrl-i>",
-    f"hint links spawn --detach {TERM} {show_yt_info_script}" + " {hint-url}",
+    "sc",
+    hint_spawn_cmd("youtube-viewer --comments"),
+)
+
+# Give a like to a video using youtube-viewer
+config.bind(
+    "gl",
+    hint_spawn_cmd("youtube-viewer --like"),
 )
 
 # Open reddit page
-config.bind("prc", f"hint links spawn --detach {TERM} tuir" + " {hint-url}")
+config.bind("prc", hint_spawn_cmd("tuir"))

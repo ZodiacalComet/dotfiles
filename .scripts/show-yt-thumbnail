@@ -1,0 +1,47 @@
+#!/bin/sh
+
+TEMP_WEBP="/tmp/youtube-thumbnail.webp"
+TEMP_PNG="/tmp/youtube-thumbnail.png"
+
+usage() {
+	echo "Usage: show-yt-thumbnail [-h] [URL]"
+}
+
+help_msg() {
+	usage
+	echo
+	echo "Script for showing the thumbnail of a Youtube video."
+	echo
+	echo "Gets the thumbnail using YoutubeDL, downloads the image using wget, converts the"
+	echo "image from webp to png and then opens it up using \$IMAGE."
+	echo
+	echo "Requirements:"
+	echo "	- youtube-dl (https://github.com/ytdl-org/youtube-dl)."
+	echo "	- ImageMagick 7."
+	echo "	- \$IMAGE has to be defined in the environment."
+}
+
+if [ -z $1 ]
+then
+	usage && echo "Need a Youtube URL to get the thumbnail from." && exit 1
+elif [ -x $IMAGE ]
+then
+	echo "IMAGE needs to be defined in the environment and be an executable." && exit 1
+fi
+
+case "$1" in
+	-h|--help) help_msg && exit 1 ;;
+	*) ;;
+esac
+
+echo "Getting thumbnail URL..."
+URL="$(youtube-dl -J $1 | jq -r '.thumbnail')"
+
+echo "Downloading thumbnail to $TEMP_WEBP..."
+wget -q -O $TEMP_WEBP $URL
+
+echo "Coverting thumbnail into $TEMP_PNG..."
+magick $TEMP_WEBP $TEMP_PNG
+
+echo "Opening $TEMP_PNG with $IMAGE"
+$IMAGE $TEMP_PNG

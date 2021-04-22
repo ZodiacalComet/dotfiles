@@ -2,8 +2,8 @@
 # => Bindings
 ################################################################################
 
-macro p set browser "mpv %u"; open-in-browser ; set browser "elinks %u"
-macro i set browser "~/.scripts/show-yt-info %u"; open-in-browser ; set browser "elinks %u"
+macro p set browser "youtube-viewer %u"; open-in-browser ; set browser "elinks %u"
+macro i set browser "~/.scripts/show-yt-thumbnail %u"; open-in-browser ; set browser "elinks %u"
 macro c set browser "youtube-viewer --comments=%u"; open-in-browser ; set browser "elinks %u"
 macro l set browser "youtube-viewer --like=%u"; open-in-browser ; set browser "elinks %u"
 
