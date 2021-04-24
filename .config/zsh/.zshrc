@@ -43,7 +43,7 @@ alias cat="bat"
 # -> Fimfiction
 #
 
-alias fft="fimfic-tracker -c $HOME/Documents/MEGAsync/fimfic-tracker/settings.py"
+alias fft="fimfic-tracker"
 alias f2e="fimfic2epub-cover-patch --image-dir $XDG_CACHE_HOME/fimfic2epub-cover-patch --title-font $XDG_DATA_HOME/fonts/Montserrat/Montserrat-Bold.ttf --author-font $XDG_DATA_HOME/fonts/Montserrat/Montserrat-Regular.ttf --fimfic2epub-dir $HOME/Pony/fimfiction-fanfics"
 
 #
