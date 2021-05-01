@@ -70,7 +70,8 @@ BIRTHDAY_FORMAT = "\n".join(
 
 # Day to count as today.
 # Type: datetime.datetime
-NOW = dt.datetime.now()
+dt_now = dt.datetime.now()
+NOW = dt.datetime(dt_now.year, dt_now.month, dt_now.day)
 
 #
 # -> Polybar Format
@@ -229,10 +230,14 @@ class BirthdayCollection:
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument(
-        "--polybar", help="Print status in polybar format.", action="store_true",
+        "--polybar",
+        help="Print status in polybar format.",
+        action="store_true",
     )
     parser.add_argument(
-        "--sort", help="Sorts the birthdays by remaining days.", action="store_true",
+        "--sort",
+        help="Sorts the birthdays by remaining days.",
+        action="store_true",
     )
     parser.add_argument(
         "--edit", help="Open birthday file with EDITOR.", action="store_true"
