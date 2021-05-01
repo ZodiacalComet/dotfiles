@@ -1,8 +1,5 @@
 #!/bin/sh
 
-TEMP_WEBP="/tmp/youtube-thumbnail.webp"
-TEMP_PNG="/tmp/youtube-thumbnail.png"
-
 usage() {
 	echo "Usage: show-yt-thumbnail [-h] [URL]"
 }
@@ -34,14 +31,27 @@ case "$1" in
 	*) ;;
 esac
 
+ID="$(echo $1 | sed "s/https:\/\/www.youtube.com\/watch?v=//g")"
+TEMP_PNG="/tmp/youtube-thumbnail-$ID.png"
+
+open_img() {
+	echo "Opening $TEMP_PNG with $IMAGE"
+	$IMAGE $TEMP_PNG
+}
+
+if [ -f "$TEMP_PNG" ]
+then
+	open_img && exit
+fi
+
 echo "Getting thumbnail URL..."
 URL="$(youtube-dl -J $1 | jq -r '.thumbnail')"
 
+TEMP_WEBP="/tmp/youtube-thumbnail.webp"
 echo "Downloading thumbnail to $TEMP_WEBP..."
 wget -q -O $TEMP_WEBP $URL
 
 echo "Coverting thumbnail into $TEMP_PNG..."
 magick $TEMP_WEBP $TEMP_PNG
 
-echo "Opening $TEMP_PNG with $IMAGE"
-$IMAGE $TEMP_PNG
+open_img
