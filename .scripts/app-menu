@@ -43,19 +43,21 @@ filemanager-menu() {
 BROWSER="$MENU_ICON Browser"
 FILEMANAGER="$MENU_ICON File Manager"
 KEEPASS="ﳳ KeepassXC"
+MEGASYNC="מּ MEGAsync"
 YOUTUBE=" Youtube Viewer"
 MUSIC=" NCMPCPP"
 RSS=" Newsboat"
 REDDIT=" TUIR"
 DISCORD="ﭮ Discord"
 
-OPTIONS="$BROWSER|$FILEMANAGER|$KEEPASS|$YOUTUBE|$MUSIC|$RSS|$REDDIT|$DISCORD"
+OPTIONS="$BROWSER|$FILEMANAGER|$KEEPASS|$MEGASYNC|$YOUTUBE|$MUSIC|$RSS|$REDDIT|$DISCORD"
 CHOICE="$(echo "$OPTIONS" | tr "|" "\n" | dmenu -i -c -l 10 -bw 4 -p "App Menu: ")"
 
 case "$CHOICE" in
 	$BROWSER) browser-menu ;;
 	$FILEMANAGER) filemanager-menu ;;
 	$KEEPASS) /snap/bin/keepassxc ;;
+	$MEGASYNC) /usr/bin/megasync ;;
 	$YOUTUBE) open_in_term /usr/local/bin/youtube-viewer ;;
 	$MUSIC) open_in_term /usr/bin/ncmpcpp ;;
 	$RSS) open_in_term /usr/bin/newsboat ;;
