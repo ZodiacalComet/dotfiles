@@ -54,6 +54,7 @@ DATE_FORMAT = "%d %B %Y (%Y-%m-%d)"
 # Format in which to print a birthday entry.
 # Placeholders:
 #   - {name}: Name of the person.
+#   - {age}: Their current age.
 #   - {birth}: Their day of birth.
 #   - {next_birthday}: Their next birthday day.
 #   - {remaining_days}: Amount of days until next their birthday.
@@ -64,6 +65,7 @@ BIRTHDAY_FORMAT = "\n".join(
         "{name}",
         "\tToday? {is_today}",
         "\tBirth: {birth}",
+        "\tAge: {age}",
         "\tNext Birthday: {next_birthday} ({remaining_days} days left)\n",
     ]
 )
@@ -117,7 +119,7 @@ class Birthday:
         self.birth = date
 
     def __str__(self):
-        attrs = ["name", "birth", "is_today", "next_birthday", "remaining_days"]
+        attrs = ["name", "birth", "is_today", "next_birthday", "remaining_days", "age"]
 
         def _fmt(value):
             if isinstance(value, dt.datetime):
@@ -153,6 +155,14 @@ class Birthday:
         if self.is_today:
             return 0
         return (self.next_birthday - NOW).days
+
+    @property
+    def age(self) -> int:
+        age = NOW.year - self.birth.year
+        if NOW.month < self.birth.month or NOW.day < self.birth.day:
+            age -= 1
+
+        return age
 
 
 class BirthdayCollection:
