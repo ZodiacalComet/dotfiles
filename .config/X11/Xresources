@@ -1,6 +1,8 @@
 *.font: JetBrainsMono Nerd Font Mono:style=Medium,Regular:size=10
 *.alpha: 0.9
 
+st.font: JetBrainsMono Nerd Font Mono:style=Medium,Regular:size=9
+
 ! ------------------------------------------------------------------------------
 ! => Theme (Material Ocean)
 ! ------------------------------------------------------------------------------
