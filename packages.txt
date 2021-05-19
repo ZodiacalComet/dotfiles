@@ -115,6 +115,7 @@ sudo
 sxhkd
 sxiv
 thunar
+thunderbird
 unzip
 uthash-dev
 vainfo
