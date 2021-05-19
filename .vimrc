@@ -6,6 +6,8 @@ call plug#begin('~/.vim/plugged')
 Plug 'dense-analysis/ale'
 Plug 'airblade/vim-gitgutter'
 
+Plug 'tpope/vim-fugitive'
+
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
@@ -19,6 +21,7 @@ Plug 'yggdroot/indentline'
 
 Plug 'baskerville/vim-sxhkdrc'
 Plug 'vim-python/python-syntax'
+Plug 'HerringtonDarkholme/yats.vim'
 
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
@@ -53,10 +56,15 @@ set nobackup
 set nowb
 set noswapfile
 
-set expandtab
 set smarttab
+"set expandtab
 set shiftwidth=4
 set tabstop=4
+set softtabstop=0 noexpandtab
+
+autocmd FileType rust,python set tabstop=4 shiftwidth=4 expandtab
+autocmd FileType html,javascript,typescript set tabstop=2 shiftwidth=2 expandtab
+autocmd FileType gitcommit set colorcolumn=+1
 
 set ai
 set si
