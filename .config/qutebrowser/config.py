@@ -106,7 +106,7 @@ config.set("messages.timeout", 5000)
 # => Zoom
 ################################################################################
 
-config.set("zoom.default", "80%")
+config.set("zoom.default", "70%")
 config.set(
     "zoom.levels",
     [
@@ -115,7 +115,6 @@ config.set(
         "50%",
         "60%",
         "70%",
-        "80%",
         "90%",
         "100%",
         "110%",
