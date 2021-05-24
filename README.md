@@ -4,26 +4,6 @@
 
 ---
 
-- **WM:** bspwm
-- **Bar:** polybar
-- **Compositor:** picom
-- **Terminal Emulator:** [st (Luke Smith's fork)](https://github.com/LukeSmithxyz/st)
-- **Shell:** zsh
-- **Editor:** vim
-- **Application Launcher:** dmenu (patched)
-- **Notification Daemon:** dunst
-- **Hotkey Daemon:** sxhkd
-- **Browser:** qutebrowser & chromium
-- **Sound server:** pulseadio
-- **Music Player:** mpd, mpc, ncmpcpp
-- **Video Player:** mpv & vlc
-- **Image Viewer:** sxiv
-- **File Explorer:** ranger & thunar
-- **RSS Feed Reader:** newsboat
-- **Screenshots:** flameshot
-
----
-
 ```bash
 git clone --bare https://github.com/ZodiacalComet/dotfiles.git $HOME/.dotfiles
 
@@ -33,7 +13,116 @@ dot checkout
 dot config status.showUntrackedFiles no
 ```
 
-# Notes
+---
 
-- Install [KeepassXC from snap](https://snapcraft.io/keepassxc), since it has the latest unlike the Debian repos.
-- Install [node from snap](https://snapcraft.io/node), they have the most recent versions available for the i386 architecture.
+- **WM:** bspwm
+- **Bar:** polybar
+- **Compositor:** picom
+- **Terminal Emulator:** [Luke Smith's st build](https://github.com/LukeSmithxyz/st)
+- **Terminal Font**: [JetBrainsMono Nerd Font](https://www.nerdfonts.com/font-downloads) & [FontAwesome](https://fontawesome.com/download)
+- **Shell:** zsh
+- **Editor:** vim
+- **Application Launcher:** dmenu (patched)
+- **Notification Daemon:** dunst
+- **Hotkey Daemon:** sxhkd
+- **Browser:** qutebrowser & firefox
+- **Sound server:** pulseadio
+- **Music Player:** mpd, mpc, ncmpcpp
+- **Video Player:** mpv & vlc
+- **Image Viewer:** sxiv
+- **File Explorer:** ranger & thunar
+- **RSS Feed Reader:** newsboat
+- **Screenshots:** flameshot
+
+# Themes
+
+- **GTK:** [Material Black Blueberry 4.0](https://www.opendesktop.org/s/Gnome/p/1316887/) & [Flatery Pink](https://www.gnome-look.org/s/Gnome/p/1332404)
+- **Firefox:** [Material Ocean](https://addons.mozilla.org/en-US/firefox/addon/material-ocean/)
+
+# Manually installed applications
+
+## Pre-compiled binaries
+
+- [**Go**](https://golang.org/): Go is an open source programming language that makes it easy to build simple, reliable, and efficient software.
+
+  See [binaries](https://golang.org/dl/) and [install instructions](https://golang.org/doc/install).
+
+- [**MEGASync**](https://mega.io/sync): Easy automated synchronisation between your computer and your MEGA cloud.
+
+- [**rustup**](https://github.com/rust-lang/rustup): The Rust toolchain installer.
+
+  ```sh
+  $ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+  ```
+
+- [**Thunderbird**](https://www.thunderbird.net/en-US/): Thunderbird is a free email application that’s easy to set up and customize - and it’s loaded with great features!.
+
+  See [binaries](https://www.thunderbird.net/en-US/thunderbird/all/).
+
+## Snap
+
+- [**KeepassXC**](https://snapcraft.io/keepassxc): Modern, secure, and cross-platform password manager compatible with KeePass.
+
+  Since it has the latest unlike the Debian repositories.
+
+- [**Node**](https://snapcraft.io/node): A JavaScript runtime built on Chrome's V8 JavaScript engine.
+
+  They have the most recent versions compiled for the i386 architecture.
+
+## Built
+
+- [**fzf**](https://github.com/junegunn/fzf): 🌸 A command-line fuzzy finder.
+
+  ```sh
+  $ make install
+  ```
+
+- [**ImageMagick**](https://github.com/ImageMagick/ImageMagick): 🧙‍♂️ ImageMagick 7.
+
+  ```sh
+  $ wget https://www.imagemagick.org/download/ImageMagick.tar.gz
+  $ tar xvzf ImageMagick.tar.gz
+  $ cd ImageMagick-7.0.8-26/
+
+  $ ./configure
+  $ make
+  $ sudo make install
+  $ sudo ldconfig /usr/local/lib
+  $ magick -version
+  ```
+
+- [**Polybar**](https://github.com/polybar/polybar): A fast and easy-to-use status bar.
+
+  See [building](https://github.com/polybar/polybar/wiki/Compiling#building).
+
+- [**youtube-viewer**](https://github.com/trizen/youtube-viewer): Lightweight YouTube client for Linux.
+
+  Don't remember what *exactly* I did for this one, but having no familiarity with perl made it a pain.
+
+## Pip
+
+- [**pipx**](https://github.com/pipxproject/pipx): Install and Run Python Applications in Isolated Environments.
+
+### Pipx
+
+- [**black**](https://github.com/psf/black): The uncompromising Python code formatter.
+- [**fanficfare**](https://github.com/JimmXinu/FanFicFare): FanFicFare is a tool for making eBooks from stories on fanfiction and other web sites.
+- [**fimfic-tracker**](https://github.com/ZodiacalComet/fimfic-tracker): An unnecessary CLI application for tracking stories on Fimfiction.
+- [**fimfic2epub-cover-patch**](https://github.com/ZodiacalComet/fimfic2epub-cover-patch): Wrapper script around fimfic2epub's CLI to handle stories without a cover.
+- [**flake8**](https://github.com/PyCQA/flake8): flake8 is a python tool that glues together pycodestyle, pyflakes, mccabe, and third-party plugins to check the style and quality of some python code.
+  - [**flake8-bugbear**](https://github.com/PyCQA/flake8-bugbear): A plugin for Flake8 finding likely bugs and design problems in your program. Contains warnings that don't belong in pyflakes and pycodestyle.
+- [**grip**](https://github.com/joeyespo/grip): Preview GitHub README.md files locally before committing them.
+- [**isort**](https://github.com/PyCQA/isort): A Python utility / library to sort imports.
+- [**pre-commit**](https://github.com/pre-commit/pre-commit): A framework for managing and maintaining multi-language pre-commit hooks.
+- [**tuir**](https://gitlab.com/ajak/tuir): Browse Reddit from your terminal.
+- [**youtube-dl**](https://github.com/ytdl-org/youtube-dl): Command-line program to download videos from YouTube.com and other video sites.
+
+## Cargo
+
+- [**bat**](https://github.com/sharkdp/bat): A cat(1) clone with wings.
+- [**fd**](https://github.com/sharkdp/fd): A simple, fast and user-friendly alternative to 'find'.
+- [**rls**](https://github.com/rust-lang/rls): The RLS provides a server that runs in the background, providing IDEs, editors, and other tools with information about Rust programs.
+
+## Npm
+
+- [**fimfic2epub**](https://github.com/daniel-j/fimfic2epub): 📚 Chrome/Firefox extension & npm package for improved EPUB export on fimfiction.net
