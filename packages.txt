@@ -29,6 +29,7 @@ libdjvulibre-dev
 libev-dev
 libevdev-dev
 libfftw3-dev
+libgdbm-dev
 libgif-dev
 libgl1-mesa-dev
 libgraphviz-dev
@@ -42,7 +43,9 @@ liblcms2-dev
 liblqr-1-0-dev
 libltdl-dev
 libmpdclient-dev
+libncurses5-dev
 libnotify-bin
+libnss3-dev
 libopenexr-dev
 libopenjp2-7-dev
 libpango1.0-dev
@@ -52,8 +55,10 @@ libpulse-dev
 libraqm-dev
 libraqm0
 libraw-dev
+libreadline-dev
 libreoffice
 librsvg2-dev
+libsqlite3-dev
 libssl-dev
 libtiff-dev
 libtool

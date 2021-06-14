@@ -95,6 +95,19 @@ dot config status.showUntrackedFiles no
 
   See [building](https://github.com/polybar/polybar/wiki/Compiling#building).
 
+- [**Python 3.9.5**](https://www.python.org/downloads/release/python-395/): __a__.
+
+  ```sh
+  $ wget https://www.python.org/ftp/python/3.9.5/Python-3.9.5.tgz
+  $ tar -xf Python-3.9.5.tgz
+  $ cd Python-3.9.5
+
+  $ ./configure --enable-optimizations
+  $ make -j 2
+  $ sudo make altinstall
+  $ python3.9 --version
+  ```
+
 - [**youtube-viewer**](https://github.com/trizen/youtube-viewer): Lightweight YouTube client for Linux.
 
   Don't remember what *exactly* I did for this one, but having no familiarity with perl made it a pain.
