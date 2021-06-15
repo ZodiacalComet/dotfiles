@@ -62,8 +62,8 @@ set shiftwidth=4
 set tabstop=4
 set softtabstop=0 noexpandtab
 
-autocmd FileType rust,python set tabstop=4 shiftwidth=4 expandtab
-autocmd FileType html,javascript,typescript set tabstop=2 shiftwidth=2 expandtab
+autocmd FileType rust,python,json set tabstop=4 shiftwidth=4 expandtab
+autocmd FileType markdown,html,javascript,typescript set tabstop=2 shiftwidth=2 expandtab
 autocmd FileType gitcommit set colorcolumn=+1
 
 set ai
@@ -121,6 +121,9 @@ map <leader>ss :setlocal spell!<CR>
 
 " Clear highligting
 map <leader>/ :noh<CR>
+
+imap jj k
+imap JJ K
 
 "
 " -> Autocmd
