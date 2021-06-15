@@ -47,6 +47,10 @@ alias wget="wget --hsts-file='$XDG_CACHE_HOME/wget-hsts'"
 
 alias cat="bat"
 
+# Frequently used commands that require to type k
+alias gitch="git checkout"
+alias mdir="mkdir"
+
 #
 # -> Fanfiction
 #
