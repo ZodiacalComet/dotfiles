@@ -39,6 +39,28 @@ dot config status.showUntrackedFiles no
 - **GTK:** [Material Black Blueberry 4.0](https://www.opendesktop.org/s/Gnome/p/1316887/) & [Flatery Pink](https://www.gnome-look.org/s/Gnome/p/1332404)
 - **Firefox:** [Material Ocean](https://addons.mozilla.org/en-US/firefox/addon/material-ocean/)
 
+# Firefox Add-ons
+
+- [**uBlock Origin**](https://addons.mozilla.org/en-US/firefox/addon/ublock-origin/): Finally, an efficient wide-spectrum content blocker. Easy on CPU and memory.
+
+- [**Privacy Badger**](https://addons.mozilla.org/en-US/firefox/addon/privacy-badger17/): Automatically learns to block invisible trackers.
+
+- [**Decentraleyes**](https://addons.mozilla.org/en-US/firefox/addon/decentraleyes/): Protects you against tracking through "free", centralized, content delivery.
+
+- [**HTTPS Everywhere**](https://addons.mozilla.org/en-US/firefox/addon/https-everywhere/): Encrypt the web! HTTPS Everywhere is a Firefox extension to protect your communications by enabling HTTPS encryption automatically on sites that are known to support it, even when you type URLs or follow links that omit the https: prefix.
+
+- [**ClearURLs**](https://addons.mozilla.org/en-US/firefox/addon/clearurls/): Removes tracking elements from URLs.
+
+- [**Universal Bypass**](https://addons.mozilla.org/en-US/firefox/addon/universal-bypass/): Don't waste your time with compliance. Universal Bypass automatically skips annoying link shorteners.
+
+- [**Buster: Captcha Solver for Humans**](https://addons.mozilla.org/en-US/firefox/addon/buster-captcha-solver/): Save time by asking Buster to solve captchas for you.
+
+- [**Translate Web Pages**](https://addons.mozilla.org/en-US/firefox/addon/traduzir-paginas-web/): Translate your page in real time using Google or Yandex.
+
+- [**KeePassXC-Browser**](https://addons.mozilla.org/en-US/firefox/addon/keepassxc-browser/): Official browser plugin for the KeePassXC password manager (https://keepassxc.org).
+
+- [**Violentmonkey**](https://addons.mozilla.org/en-US/firefox/addon/violentmonkey/): Violentmonkey provides userscripts support for browsers. It's open source! https://github.com/violentmonkey/violentmonkey
+
 # Manually installed applications
 
 ## Pre-compiled binaries
