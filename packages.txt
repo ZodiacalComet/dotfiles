@@ -62,6 +62,7 @@ libsqlite3-dev
 libssl-dev
 libtiff-dev
 libtool
+libwebkit2gtk-4.0-dev
 libwebp-dev
 libwmf-dev
 libx11-dev
