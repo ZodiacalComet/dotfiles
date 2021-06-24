@@ -66,6 +66,11 @@ autocmd FileType rust,python,json set tabstop=4 shiftwidth=4 expandtab
 autocmd FileType markdown,html,javascript,typescript set tabstop=2 shiftwidth=2 expandtab
 autocmd FileType gitcommit set colorcolumn=+1
 
+if !exists("autocommands_loaded")
+	let autocommands_loaded = 1
+	au BufNewFile,BufRead *.vue set syntax=html tabstop=2 shiftwidth=2 expandtab
+endif
+
 set ai
 set si
 set wrap
