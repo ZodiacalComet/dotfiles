@@ -132,7 +132,15 @@ dot config status.showUntrackedFiles no
 
 - [**youtube-viewer**](https://github.com/trizen/youtube-viewer): Lightweight YouTube client for Linux.
 
-  Don't remember what *exactly* I did for this one, but having no familiarity with perl made it a pain.
+  ```sh
+  # First install this
+  $ cpan Module::Build
+
+  # Then, as instructed in the README
+  $ perl Build.PL
+  $ sudo ./Build installdeps
+  $ sudo ./Build install
+  ```
 
 ## Pip
 
@@ -161,3 +169,35 @@ dot config status.showUntrackedFiles no
 ## Npm
 
 - [**fimfic2epub**](https://github.com/daniel-j/fimfic2epub): 📚 Chrome/Firefox extension & npm package for improved EPUB export on fimfiction.net
+
+# Post-installation
+
+## MPD
+
+```sh
+$ sudo systemctl stop mpd.socket
+$ sudo systemctl stop mpd.service
+
+$ sudo systemctl disable mpd.socket
+$ sudo systemctl disable mpd.service
+
+$ mkdir ~/.cache/mpd
+$ mkdir ~/.local/share/mpd
+```
+
+## VIM
+
+- [**vim-plug**](https://github.com/junegunn/vim-plug): 🌺 Minimalist Vim Plugin Manager.
+
+  ```sh
+  curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+      https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  ```
+
+### Spellchecking
+
+```
+Warning: Cannot find word list "es.utf-8.spl" or "es.ascii.spl"
+```
+
+To get the necessary files, just untoggle and then toggle spell checking to get a download prompt.
