@@ -50,6 +50,16 @@ export NODE_REPL_HISTORY="$XDG_DATA_HOME/node_repl_history"
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
 
 #
+# -> Perl
+#
+
+export PERL_HOME="$XDG_DATA_HOME/perl5"
+export PERL_MB_OPT="--install_base \"$PERL_HOME\""
+export PERL_MM_OPT="INSTALL_BASE=$PERL_HOME"
+export PERL_LOCAL_LIB_ROOT="$PERL_HOME${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"
+export PERL5LIB="$PERL_HOME/lib/perl5${PERL5LIB:+:${PERL5LIB}}"
+
+#
 # -> Other Directories
 #
 
