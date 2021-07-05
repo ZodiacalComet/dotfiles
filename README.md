@@ -170,6 +170,11 @@ dot config status.showUntrackedFiles no
 
 - [**fimfic2epub**](https://github.com/daniel-j/fimfic2epub): 📚 Chrome/Firefox extension & npm package for improved EPUB export on fimfiction.net
 
+  The version 1.7.55, the most recent as of now, the "--dir" flag doesn't really work for me. So I install the version that I had previously.
+  ```
+  $ npm i -g fimfic2epub@1.7.52
+  ```
+
 # Post-installation
 
 ## MPD
