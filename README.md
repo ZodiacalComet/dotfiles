@@ -187,7 +187,7 @@ $ sudo systemctl disable mpd.socket
 $ sudo systemctl disable mpd.service
 
 $ mkdir ~/.cache/mpd
-$ mkdir ~/.local/share/mpd
+$ mkdir -p ~/.local/share/mpd/playlists
 ```
 
 ## VIM
