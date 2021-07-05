@@ -93,6 +93,15 @@ dot config status.showUntrackedFiles no
 
 ## Built
 
+- [**picom**](https://github.com/yshui/picom): A lightweight compositor for X11.
+
+  ```sh
+  $ git submodule update --init --recursive
+  $ meson --buildtype=release . build
+  $ ninja -C build
+  $ ninja -C build install
+  ```
+
 - [**fzf**](https://github.com/junegunn/fzf): 🌸 A command-line fuzzy finder.
 
   ```sh
