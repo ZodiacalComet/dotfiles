@@ -105,12 +105,11 @@ highlight VertSplit term=bold ctermfg=White
 " -> Mappings
 "
 
-" Maybe I'll want to suffer forcing me to use the vim movement keys when I get
-" to have another keyboard. The K key is a pain still.
-"noremap <Up> <nop>
-"noremap <Down> <nop>
-"noremap <Left> <nop>
-"noremap <Right> <nop>
+" To make myself use the vim keys to move around, or else
+noremap <Up> <nop>
+noremap <Down> <nop>
+noremap <Left> <nop>
+noremap <Right> <nop>
 
 " Moving through splits
 map <C-j> <C-W>j
