@@ -127,9 +127,6 @@ map <leader>ss :setlocal spell!<CR>
 " Clear highligting
 map <leader>/ :noh<CR>
 
-imap jj k
-imap JJ K
-
 "
 " -> Autocmd
 "
