@@ -35,6 +35,12 @@ shift + Print
 XF86AudioMute
 	pactl set-sink-mute 0 toggle
 
+super + {_,shift + }KP_Subtract
+	pactl set-sink-mute 0 false ; pactl set-sink-volume 0 {-5,-1}%
+
+super + {_,shift + }KP_Add
+	pactl set-sink-mute 0 false ; pactl set-sink-volume 0 {+5,+1}%
+
 #
 # -> Scripts
 #
