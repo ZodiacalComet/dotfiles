@@ -63,6 +63,17 @@ if __name__ == "__main__":
         help="Sets the foreground color.",
     )
     parser.add_argument(
+        "--border-color",
+        nargs=4,
+        default=[0, 0, 0, 0],
+        type=int,
+        metavar=("R", "G", "B", "A"),
+        help="Sets the border color.",
+    )
+    parser.add_argument(
+        "--border-size", default=0, type=int, help="Sets the size of the border."
+    )
+    parser.add_argument(
         "--padding",
         nargs=2,
         default=[5, 5],
@@ -92,11 +103,20 @@ if __name__ == "__main__":
     text = ensure_str(args.text)
     canvas = tuple(args.canvas)
     foreground = tuple(args.foreground)
+    border_size = args.border_size
+    border_color = tuple(args.border_color)
     font = ImageFont.truetype(args.font, size=args.font_size)
     padding = tuple(args.padding)
 
     im = Image.new("RGBA", canvas, TRANSPARENT)
     draw = ImageDraw.Draw(im, mode="RGBA")
-    draw.text(CREATION_PADDING, text, fill=foreground, font=font)
+    draw.text(
+        CREATION_PADDING,
+        text,
+        fill=foreground,
+        stroke_width=border_size,
+        stroke_fill=border_color,
+        font=font,
+    )
 
     crop_image(im, padding).save(args.output)
