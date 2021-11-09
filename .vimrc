@@ -63,8 +63,8 @@ set tabstop=4
 set softtabstop=0 noexpandtab
 
 autocmd FileType rust,python,json set tabstop=4 shiftwidth=4 expandtab
-autocmd FileType markdown,html,javascript,typescript set tabstop=2 shiftwidth=2 expandtab
-autocmd FileType gitcommit set colorcolumn=+1
+autocmd FileType markdown,html,xhtml,liquid,htmldjango,javascript,typescript set tabstop=2 shiftwidth=2 expandtab
+autocmd FileType gitcommit,rust set colorcolumn=+1
 
 if !exists("autocommands_loaded")
 	let autocommands_loaded = 1
@@ -100,6 +100,8 @@ highlight SpellBad term=underline cterm=underline ctermfg=9
 " Make vertical splits be less of an eyesore
 highlight clear VertSplit
 highlight VertSplit term=bold ctermfg=White
+
+highlight ColorColumn ctermbg=8
 
 "
 " -> Mappings
