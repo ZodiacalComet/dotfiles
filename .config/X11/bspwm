@@ -1,15 +1,14 @@
 #!/bin/sh
 
 ################################################################################
-# => Screen resolution
+# => Screen
 ################################################################################
 
-# Use external monitor as the primary one
-xrandr --output VGA1 --primary
 # Disable laptop's monitor
 xrandr --output LVDS1 --off
-# Set resolution to 1440x900
-xrandr --output VGA1 --mode 1440x900
+# Setting up external monitor
+xrandr --output VGA1 —-primary --mode 1440x900
+xrandr --output VGA1 --brightness 0.84
 
 ################################################################################
 # => Before starting WM
