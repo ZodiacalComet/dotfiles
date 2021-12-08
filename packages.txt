@@ -6,7 +6,6 @@ chromium
 cmake-data
 cmake
 curl
-dunst
 exa
 feh
 ffmpeg
@@ -45,6 +44,7 @@ libltdl-dev
 libmpdclient-dev
 libncurses5-dev
 libnotify-bin
+libnotify-dev
 libnss3-dev
 libopenexr-dev
 libopenjp2-7-dev

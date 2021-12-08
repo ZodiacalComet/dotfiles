@@ -151,6 +151,13 @@ dot config status.showUntrackedFiles no
   $ sudo ./Build install
   ```
 
+- [**dunst**](https://github.com/dunst-project/dunst): Lightweight and customizable notification daemon.
+
+  ```sh
+  make
+  sudo make install
+  ```
+
 ## Pip
 
 - [**pipx**](https://github.com/pipxproject/pipx): Install and Run Python Applications in Isolated Environments.
