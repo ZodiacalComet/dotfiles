@@ -1,10 +1,13 @@
 #!/usr/bin/env python3
-"""
+import argparse
+from os import path
+
+DESCRIPTION = """
 Simple Python script to get a color from the ~/.Xresources file.
 
 It expects an argument, the name of the color variable to get from that file.
 
-Usage:
+Examples:
     $ get-xresources-color color0
     #546e7a
 
@@ -18,20 +21,7 @@ them until it finds the one that matches the given argument and prints it.
 
 For now, its existence is for being able to get those values inside
 ~/.config/bspwm/bspwmrc
-"""
-from os import path
-from sys import argv
-
-if len(argv) == 1:
-    exit()
-
-
-COLOR_TO_GET = argv[1]
-XRESOURCES_FILE = path.expanduser("~/.config/X11/Xresources")
-
-
-with open(XRESOURCES_FILE, "r", encoding="utf-8") as f:
-    content = f.read()
+""".strip()
 
 
 def filter_colors(line: str):
@@ -53,9 +43,35 @@ def map_colors(line: str):
     return (name, hex_color)
 
 
-for name, hex_color in map(map_colors, filter(filter_colors, content.splitlines())):
-    if not name == COLOR_TO_GET:
-        continue
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(
+        description=DESCRIPTION,
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+    )
+    parser.add_argument(
+        "--xresources-file",
+        default=path.expanduser("~/.config/X11/Xresources"),
+        type=str,
+        metavar="FILE",
+        help="Alternative Xresources file to use.",
+    )
+    parser.add_argument(
+        "name",
+        type=str,
+        metavar="NAME",
+        help="Name of the color to get.",
+    )
 
-    print(hex_color)
-    break
+    args = parser.parse_args()
+
+    with open(args.xresources_file, "r", encoding="utf-8") as f:
+        content = f.read()
+
+    for name, hex_color in map(map_colors, filter(filter_colors, content.splitlines())):
+        if not name == args.name:
+            continue
+
+        print(hex_color)
+        exit(0)
+
+    exit(1)
