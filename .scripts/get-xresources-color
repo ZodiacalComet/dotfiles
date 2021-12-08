@@ -5,10 +5,10 @@ Simple Python script to get a color from the ~/.Xresources file.
 It expects an argument, the name of the color variable to get from that file.
 
 Usage:
-    $ get_xresources_color color0
+    $ get-xresources-color color0
     #546e7a
 
-    $ get_xresources_color background
+    $ get-xresources-color background
     #0f111a
 
 Filters by line the contents of the file, gets the ones that start with '*.'
@@ -19,8 +19,8 @@ them until it finds the one that matches the given argument and prints it.
 For now, its existence is for being able to get those values inside
 ~/.config/bspwm/bspwmrc
 """
-from sys import argv
 from os import path
+from sys import argv
 
 if len(argv) == 1:
     exit()

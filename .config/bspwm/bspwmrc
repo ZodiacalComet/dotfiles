@@ -22,7 +22,7 @@ bspc config gapless_monocle      true
 #
 
 get_color () {
-    ~/.scripts/get_xresources_color "$1"
+    ~/.scripts/get-xresources-color "$1"
 }
 
 bspc config normal_border_color   "$(get_color background)"
