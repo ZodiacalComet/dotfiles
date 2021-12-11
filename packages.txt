@@ -1,7 +1,9 @@
 apt-file
 automake
+breeze
 bspwm
 build-essential
+calibre
 chromium
 cmake-data
 cmake
@@ -18,6 +20,7 @@ gnome-disk-utility
 gsfonts
 htop
 jq
+kdenlive
 libbrotli-dev
 libbz2-dev
 libcairo2-dev
@@ -58,6 +61,7 @@ libraw-dev
 libreadline-dev
 libreoffice
 librsvg2-dev
+libsdl2-dev
 libsqlite3-dev
 libssl-dev
 libtiff-dev
@@ -120,8 +124,11 @@ snapd
 sudo
 sxhkd
 sxiv
+task-desktop
+task-xfce-desktop
 thunar
 thunderbird
+unar
 unzip
 uthash-dev
 vainfo
