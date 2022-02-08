@@ -8,7 +8,7 @@ config = config  # noqa: F821
 
 TERM = [getenv("TERMINAL", "st")]
 EDITOR = [getenv("EDITOR", "vim")]
-FONT = '"JetBrainsMono Nerd Font Mono"'
+FONT = '"JetBrains Mono NL"'
 
 ################################################################################
 # => Default
