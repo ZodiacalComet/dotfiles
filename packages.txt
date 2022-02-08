@@ -8,12 +8,14 @@ chromium
 cmake-data
 cmake
 curl
+doxygen
 exa
 feh
 ffmpeg
 figlet
 flameshot
 g++
+gettext
 ghostscript
 git
 gnome-disk-utility
@@ -65,6 +67,7 @@ libsdl2-dev
 libsqlite3-dev
 libssl-dev
 libtiff-dev
+libtool-bin
 libtool
 libwebkit2gtk-4.0-dev
 libwebp-dev

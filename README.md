@@ -158,6 +158,14 @@ dot config status.showUntrackedFiles no
   sudo make install
   ```
 
+- [**neovim**](https://github.com/neovim/neovim): Vim-fork focused on extensibility and usability
+
+  ```sh
+  git clone https://github.com/neovim/neovim
+  cd neovim && make CMAKE_BUILD_TYPE=Release
+  sudo make install
+  ```
+
 ## Pip
 
 - [**pipx**](https://github.com/pipxproject/pipx): Install and Run Python Applications in Isolated Environments.

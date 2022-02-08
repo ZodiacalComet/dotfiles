@@ -42,7 +42,8 @@ alias lc="exa -alFg --color=always --group-directories-first --git"
 alias lcx="exa -x --color=always --group-directories-first"
 alias lcxa="lcx -a"
 
-alias vi="vim"
+alias vi="nvim"
+alias vim="nvim"
 alias nc="ncmpcpp"
 
 alias wget="wget --hsts-file='$XDG_CACHE_HOME/wget-hsts'"

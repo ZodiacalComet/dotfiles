@@ -10,8 +10,8 @@ export XDG_DATA_HOME="$HOME/.local/share"
 # => Default apps
 ################################################################################
 
-export EDITOR="vim"
-export VISUAL="vim"
+export EDITOR="nvim"
+export VISUAL="nvim"
 export TERMINAL="st"
 export BROWSER="qutebrowser"
 export IMAGE="sxiv"
