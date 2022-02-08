@@ -35,27 +35,42 @@ shift + Print
 XF86AudioMute
 	pactl set-sink-mute 0 toggle
 
+################################################################################
+# => Custom
+################################################################################
+
+# F1: Power Menu
+# F2: Change keyboard language (us/es)
+# F3: Open application menu
+super + {F1,F2,F3}
+	~/.scripts/{system-menu,change-keyboard-layout,app-menu}
+
+super + KP_Insert ; {KP_End,KP_Down,KP_Next}
+	~/.scripts/{system-menu,change-keyboard-layout,app-menu}
+
+# MPC
+super + {_,shift + }KP_Left
+	mpc {seek -2,prev}
+
+#   TODO: Playlist selector with dmenu binded to Shift variant
+super + KP_Begin
+	mpc toggle
+
+super + {_,shift + }KP_Right
+	mpc {seek +2,next}
+
+# Birthday Reminder
+super + {_,shift + }KP_Home
+	~/.scripts/polybar/birthday {--show,--edit}
+
+# Alternative volume control bindings
+#   This keyboard doesn't have keys for volume control
+#   TODO: Mute binding
 super + {_,shift + }KP_Subtract
 	pactl set-sink-mute 0 false ; pactl set-sink-volume 0 {-5,-1}%
 
 super + {_,shift + }KP_Add
 	pactl set-sink-mute 0 false ; pactl set-sink-volume 0 {+5,+1}%
-
-#
-# -> Scripts
-#
-
-# Power Menu
-super + F1
-	~/.scripts/system-menu
-
-# Change keyboard language
-super + F2
-	~/.scripts/change-keyboard-layout
-
-# Open application menu
-super + F3
-	~/.scripts/app-menu
 
 ################################################################################
 # => Bspwm
