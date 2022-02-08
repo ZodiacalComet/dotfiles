@@ -189,6 +189,8 @@ dot config status.showUntrackedFiles no
 - [**bat**](https://github.com/sharkdp/bat): A cat(1) clone with wings.
 - [**fd**](https://github.com/sharkdp/fd): A simple, fast and user-friendly alternative to 'find'.
 - [**rls**](https://github.com/rust-lang/rls): The RLS provides a server that runs in the background, providing IDEs, editors, and other tools with information about Rust programs.
+- [**StyLua**](https://github.com/JohnnyMorganz/StyLua): An opinionated Lua code formatter
+- [**just**](https://github.com/casey/just): 🤖 Just a command runner
 
 ## Npm
 
