@@ -12,6 +12,7 @@ SEARCH_ENGINES = {
     "gh": "https://github.com/search?q={}",
     "deb-pkg": "https://packages.debian.org/search?suite=default&section=all&arch=any&searchon=names&keywords={}",
     "py": "https://docs.python.org/3.7/search.html?q={}&check_keywords=yes&area=default",
+    "rs": "https://docs.rs/releases/search?query={}",
 }
 
 config.set("url.default_page", "https://start.duckduckgo.com/")
