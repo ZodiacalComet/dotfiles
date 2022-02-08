@@ -21,6 +21,7 @@ add_to_path "/usr/local/go/bin"
 add_to_path "$GOPATH/bin"
 add_to_path "$PERL_HOME/bin"
 
+export BAT_THEME="Monokai Extended Bright"
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
 ################################################################################
