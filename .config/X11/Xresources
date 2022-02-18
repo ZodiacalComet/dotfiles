@@ -64,3 +64,12 @@ dmenu.background: #0f111a
 dmenu.foreground: #8f93a2
 dmenu.selbackground: #82aaff
 dmenu.selforeground: #ffffff
+
+! ------------------------------------------------------------------------------
+! => nsxiv
+! ------------------------------------------------------------------------------
+
+window.background: #0f111a
+window.foreground: #ffffff
+bar.font: JetBrainsMono Nerd Font Mono:style=Bold:size=10
+mark.foreground: #82aaff

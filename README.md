@@ -166,6 +166,14 @@ dot config status.showUntrackedFiles no
   sudo make install
   ```
 
+- [**nsxiv**](https://github.com/nsxiv/nsxiv): Neo Simple X Image Viewer
+
+  ```sh
+  git clone https://github.com/nsxiv/nsxiv
+  cd nsxiv
+  sudo make install
+  ```
+
 ## Pip
 
 - [**pipx**](https://github.com/pipxproject/pipx): Install and Run Python Applications in Isolated Environments.

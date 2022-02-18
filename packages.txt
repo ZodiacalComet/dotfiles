@@ -34,6 +34,7 @@ libde265-dev
 libdjvulibre-dev
 libev-dev
 libevdev-dev
+libexif-dev
 libfftw3-dev
 libgdbm-dev
 libgif-dev
@@ -42,6 +43,7 @@ libgraphviz-dev
 libgs-dev
 libgtk-3-dev
 libharfbuzz-dev
+libimlib2-dev
 libiw-dev
 libjemalloc-dev
 libjpeg-dev

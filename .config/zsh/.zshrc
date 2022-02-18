@@ -45,6 +45,7 @@ alias lcxa="lcx -a"
 alias vi="nvim"
 alias vim="nvim"
 alias nc="ncmpcpp"
+alias sxiv="nsxiv"
 
 alias wget="wget --hsts-file='$XDG_CACHE_HOME/wget-hsts'"
 

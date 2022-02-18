@@ -14,7 +14,7 @@ export EDITOR="nvim"
 export VISUAL="nvim"
 export TERMINAL="st"
 export BROWSER="qutebrowser"
-export IMAGE="sxiv"
+export IMAGE="nsxiv"
 
 ################################################################################
 # => Cleaning HOME
