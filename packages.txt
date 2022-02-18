@@ -17,6 +17,8 @@ flameshot
 g++
 gettext
 ghostscript
+gimp-python
+gimp
 git
 gnome-disk-utility
 gsfonts
