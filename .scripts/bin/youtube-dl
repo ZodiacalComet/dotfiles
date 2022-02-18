@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+# A hack to force mpv use yt-dlp, since Debian has 0.29.1 which apparently doesn't have
+# the ytdl_hook.lua that prioritizes yt-dlp over youtube-dl
+
+yt-dlp $@

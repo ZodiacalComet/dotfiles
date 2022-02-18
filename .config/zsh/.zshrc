@@ -65,10 +65,10 @@ alias f2e="fimfic2epub-cover-patch --image-dir $XDG_CACHE_HOME/fimfic2epub-cover
 #
 
 alias yv="youtube-viewer"
-alias yt="youtube-dl"
-alias ytv='youtube-dl --continue --add-metadata -f "mp4[height<=480]+bestaudio" -o "~/Videos/%(title)s.%(ext)s"'
-alias yta='youtube-dl --continue --add-metadata --embed-thumbnail --extract-audio --audio-format mp3 --audio-quality 0 -o "~/Music/%(title)s.%(ext)s"'
-alias ytal='youtube-dl --continue --add-metadata --embed-thumbnail --extract-audio --audio-format mp3 --audio-quality 0 -o "~/Music/%(album_artist)s - %(album)s/%(track)s.%(ext)s"'
+alias yt="yt-dlp"
+alias ytv='yt-dlp --continue --add-metadata -f "mp4[height<=480]+bestaudio" -o "~/Videos/%(title)s.%(ext)s"'
+alias yta='yt-dlp --continue --add-metadata --embed-thumbnail --extract-audio --audio-format mp3 --audio-quality 0 -o "~/Music/%(title)s.%(ext)s"'
+alias ytal='yt-dlp --continue --add-metadata --embed-thumbnail --extract-audio --audio-format mp3 --audio-quality 0 -o "~/Music/%(album_artist)s - %(album)s/%(track)s.%(ext)s"'
 
 #
 # -> Managing compressed files

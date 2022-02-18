@@ -190,7 +190,7 @@ dot config status.showUntrackedFiles no
 - [**isort**](https://github.com/PyCQA/isort): A Python utility / library to sort imports.
 - [**pre-commit**](https://github.com/pre-commit/pre-commit): A framework for managing and maintaining multi-language pre-commit hooks.
 - [**tuir**](https://gitlab.com/ajak/tuir): Browse Reddit from your terminal.
-- [**youtube-dl**](https://github.com/ytdl-org/youtube-dl): Command-line program to download videos from YouTube.com and other video sites.
+- [**yt-dlp**](https://github.com/yt-dlp/yt-dlp): A youtube-dl fork with additional features and fixes.
 
 ## Cargo
 
