@@ -174,6 +174,12 @@ dot config status.showUntrackedFiles no
   sudo make install
   ```
 
+- [**dragon**](https://github.com/mwh/dragon): Drag and drop source/target for X
+  ```sh
+  git clone https://github.com/mwh/dragon
+  cd dragon && make install
+  ```
+
 ## Pip
 
 - [**pipx**](https://github.com/pipxproject/pipx): Install and Run Python Applications in Isolated Environments.
