@@ -1,75 +1,73 @@
+! ------------------------------------------------------------------------------
+! => Material Ocean Colorscheme
+! ------------------------------------------------------------------------------
+! Got it from this repository: https://github.com/mbadolato/iTerm2-Color-Schemes
+! Xresources file: https://github.com/mbadolato/iTerm2-Color-Schemes/blob/master/Xresources/MaterialOcean
+
+#define bg      #0f111a
+#define fg      #ffffff
+#define fg_alt  #8f93a2
+
+#define black   #546e7a
+#define red     #ff5370
+#define green   #c3e88d
+#define yellow  #ffcb6b
+#define blue    #82aaff
+#define magenta #c792ea
+#define cyan    #89ddff
+#define white   #ffffff
+
+! ------------------------------------------------------------------------------
+! => General
+! ------------------------------------------------------------------------------
+
 *.font: JetBrainsMono Nerd Font Mono:style=Medium,Regular:size=10
-*.alpha: 0.9
-st.font: JetBrains Mono NL,JetBrains Mono NL Medium:style=Medium,Regular:size=8
+
+*.background:  bg
+*.foreground:  white
+*.cursorColor: fg_alt
+
+*.color0:      black
+*.color1:      red
+*.color2:      green
+*.color3:      yellow
+*.color4:      blue
+*.color5:      magenta
+*.color6:      cyan
+*.color7:      white
+*.color8:      black
+*.color9:      red
+*.color10:     green
+*.color11:     yellow
+*.color12:     blue
+*.color13:     magenta
+*.color14:     cyan
+*.color15:     white
+
+*.colorBD:     fg_alt
 
 ! ------------------------------------------------------------------------------
-! => Theme (Material Ocean)
+! => st (simple terminal)
 ! ------------------------------------------------------------------------------
 
-! Got it from: https://github.com/mbadolato/iTerm2-Color-Schemes/blob/master/Xresources/MaterialOcean
-! On this Github repo: https://github.com/mbadolato/iTerm2-Color-Schemes
-
-*.foreground:  #ffffff
-*.background:  #0f111a
-*.cursorColor: #8f93a2
-
-!
-! Alt (Added)
-*.background-alt: #272d47
-*.foreground-alt: #b7bbc9
-!
-! Black
-*.color0:      #546e7a
-*.color8:      #546e7a
-!
-! Red
-*.color1:      #ff5370
-*.color9:      #ff5370
-!
-! Green
-*.color2:      #c3e88d
-*.color10:     #c3e88d
-!
-! Yellow
-*.color3:      #ffcb6b
-*.color11:     #ffcb6b
-!
-! Blue
-*.color4:      #82aaff
-*.color12:     #82aaff
-!
-! Magenta
-*.color5:      #c792ea
-*.color13:     #c792ea
-!
-! Cyan
-*.color6:      #89ddff
-*.color14:     #89ddff
-!
-! White
-*.color7:      #ffffff
-*.color15:     #ffffff
-!
-! Bold, Italic, Underline
-*.colorBD:     #8f93a2
-!*.colorIT:
-!*.colorUL:
+st.font:  JetBrains Mono NL,JetBrains Mono NL Medium:style=Medium,Regular:size=8
+st.alpha: 0.9
 
 ! ------------------------------------------------------------------------------
-! => Dmenu
+! => dmenu
 ! ------------------------------------------------------------------------------
 
-dmenu.font: JetBrainsMono Nerd Font Mono:style=Bold:size=13
-dmenu.background: #0f111a
-dmenu.foreground: #8f93a2
-dmenu.selbackground: #82aaff
-dmenu.selforeground: #ffffff
+dmenu.font:          JetBrainsMono Nerd Font Mono:style=Bold:size=13
+dmenu.background:    bg
+dmenu.foreground:    fg_alt
+dmenu.selbackground: blue
+dmenu.selforeground: white
 
 ! ------------------------------------------------------------------------------
 ! => nsxiv
 ! ------------------------------------------------------------------------------
 
-window.background: #0f111a
-window.foreground: #ffffff
-bar.font: JetBrainsMono Nerd Font Mono:style=Bold:size=10
-mark.foreground: #82aaff
+bar.font:          JetBrainsMono Nerd Font Mono:style=Bold:size=10
+mark.foreground:   blue
+window.background: bg
+window.foreground: white
