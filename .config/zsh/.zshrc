@@ -29,7 +29,8 @@ export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 ################################################################################
 
 if [[ "$(tty)" = "/dev/tty1" ]]; then
-    $HOME/.scripts/start-menu
+	# $HOME/.scripts/start-menu
+	startx "$XDG_CONFIG_HOME/X11/bspwm"
 fi
 
 ################################################################################
@@ -45,6 +46,7 @@ alias lcxa="lcx -a"
 alias vi="nvim"
 alias vim="nvim"
 alias nc="ncmpcpp"
+alias sx="nsxiv"
 alias sxiv="nsxiv"
 
 alias wget="wget --hsts-file='$XDG_CACHE_HOME/wget-hsts'"
