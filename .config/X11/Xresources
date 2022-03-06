@@ -6,6 +6,7 @@
 
 #define bg      #0f111a
 #define fg      #ffffff
+#define bg_alt  #272d47
 #define fg_alt  #8f93a2
 
 #define black   #546e7a
@@ -45,6 +46,10 @@
 *.color15:     white
 
 *.colorBD:     fg_alt
+
+! Used by some personal scripts
+*.background-alt: bg_alt
+*.foreground-alt: fg_alt
 
 ! ------------------------------------------------------------------------------
 ! => st (simple terminal)
