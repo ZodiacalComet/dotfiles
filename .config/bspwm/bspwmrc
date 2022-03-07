@@ -25,9 +25,9 @@ get_color () {
     ~/.scripts/get-xresources-color "$1"
 }
 
-bspc config normal_border_color   "$(get_color background)"
-bspc config active_border_color   "$(get_color color2)"
-bspc config focused_border_color  "$(get_color color4)"
+bspc config normal_border_color   "$(get_color bg)"
+bspc config active_border_color   "$(get_color green)"
+bspc config focused_border_color  "$(get_color blue)"
 
 ################################################################################
 # => Rules

@@ -17,7 +17,7 @@ xrandr --output VGA1 --brightness 0.84
 # Restore wallpaper if there was one
 if [ -f "$WALLPAPER_PATH" ]
 then
-	feh --no-fehbg --bg-max "$WALLPAPER_PATH" --image-bg 000000
+	feh --no-fehbg --image-bg "$(~/.scripts/get-xresources-color bg)" --bg-max "$WALLPAPER_PATH"
 fi
 
 xrdb -merge ~/.config/X11/Xresources

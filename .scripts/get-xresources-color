@@ -3,43 +3,36 @@ import argparse
 from os import path
 
 DESCRIPTION = """
-Simple Python script to get a color from the ~/.Xresources file.
+Simple Python script to get a define declaration value from the ~/.Xresources
+file.
 
-It expects an argument, the name of the color variable to get from that file.
+It expects an argument, the name of the variable to get the value from.
 
 Examples:
-    $ get-xresources-color color0
+    $ get-xresources-color black
     #546e7a
 
-    $ get-xresources-color background
+    $ get-xresources-color bg
     #0f111a
 
-Filters by line the contents of the file, gets the ones that start with '*.'
-and ignores the ones that contains 'font' on them. Gets rid of all trailing
-whitespace and maps the name of each variable and hex value. Goes through
-them until it finds the one that matches the given argument and prints it.
+Filters by line the contents of the file, gets the ones that start with
+'#define'. Splits by space to get the name and its value then goes through
+each name until it finds the one that matches the given argument and prints
+it.
 
-For now, its existence is for being able to get those values inside
+If it doesn't find a match, doesn't print anything and exits with 1.
+
+Mainly made for being able to get those values inside
 ~/.config/bspwm/bspwmrc
 """.strip()
 
 
 def filter_colors(line: str):
-    if not line.startswith("*."):
-        return False
-
-    if "font" in line:
-        return False
-
-    return True
+    return line.startswith("#define")
 
 
 def map_colors(line: str):
-    name, hex_color = line.split(":")
-
-    name = name[2:]
-    hex_color = hex_color.strip()
-
+    name, hex_color = line.split()[1:]
     return (name, hex_color)
 
 
