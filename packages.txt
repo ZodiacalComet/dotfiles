@@ -138,7 +138,6 @@ ruby-full
 snapd
 sudo
 sxhkd
-sxiv
 task-desktop
 task-xfce-desktop
 thunar
