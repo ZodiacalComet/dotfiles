@@ -59,7 +59,7 @@ alias cat="bat"
 
 alias fff="fanficfare"
 alias fft="fimfic-tracker"
-alias f2e="fimfic2epub-cover-patch --image-dir $XDG_CACHE_HOME/fimfic2epub-cover-patch --title-font $XDG_DATA_HOME/fonts/Montserrat/Montserrat-Bold.ttf --author-font $XDG_DATA_HOME/fonts/Montserrat/Montserrat-Regular.ttf --fimfic2epub-dir $HOME/Pony/fimfiction-fanfics"
+alias f2e="f2e-alt-cover --image-dir /tmp/f2e-alt-cover --title-font $XDG_DATA_HOME/fonts/Montserrat/Montserrat-Bold.ttf --author-font $XDG_DATA_HOME/fonts/Montserrat/Montserrat-Regular.ttf --fimfic2epub-dir $HOME/Pony/fimfiction-fanfics"
 
 #
 # -> Youtube
