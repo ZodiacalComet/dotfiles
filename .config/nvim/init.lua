@@ -97,7 +97,7 @@ nvim_create_augroups({
     { "FileType", "rust,python,json", "set tabstop=4 shiftwidth=4 expandtab" },
     {
       "FileType",
-      "markdown,html,xhtml,liquid,htmldjango,javascript,typescript,lua",
+      "markdown,html,xhtml,liquid,htmldjango,javascript,javascriptreact,typescript,lua,scss,sass",
       "set tabstop=2 shiftwidth=2 expandtab",
     },
   },
