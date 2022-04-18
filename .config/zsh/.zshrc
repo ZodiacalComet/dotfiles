@@ -124,6 +124,8 @@ compr() {
 
 alias ..="cd .."
 alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
 
 #
 # -> Confirm before doing it
