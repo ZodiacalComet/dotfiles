@@ -115,8 +115,16 @@ nvim_create_augroups({
 -- Mapping
 -----------------------------------------------------------
 
+function mode_map(mode, lhs, rhs)
+  vim.api.nvim_set_keymap(mode, lhs, rhs, { noremap = true })
+end
+
 function nmap(lhs, rhs)
-  vim.api.nvim_set_keymap("n", lhs, rhs, { noremap = true })
+  mode_map("n", lhs, rhs)
+end
+
+function imap(lhs, rhs)
+  mode_map("i", lhs, rhs)
 end
 
 -- General bindings
@@ -140,6 +148,25 @@ end
 for _, key in pairs({ "j", "k", "h", "l" }) do
   nmap("<C-" .. key .. ">", "<C-W>" .. key)
 end
+
+-- Nifty mapping to quickly correct spelling mistakes.
+-- From: https://castel.dev/post/lecture-notes-1/#correcting-spelling-mistakes-on-the-fly
+imap(
+  "<C-l>",
+  -- "The `<c-g>u` in the middle make it possible to undo the spelling correction quickly."
+  "<c-g>u"
+    -- Enter Normal mode
+    .. "<Esc>"
+    -- Move cursor to last spelling mistake
+    .. "[s"
+    -- Use the first suggestion
+    .. "1z="
+    -- Move the cursor back
+    .. "`]"
+    -- Enter insert mode with cursor as it was
+    .. "a"
+    .. "<c-g>u"
+)
 
 local telescope_builtin = require("telescope.builtin")
 local ivy_theme = require("telescope.themes").get_ivy()
