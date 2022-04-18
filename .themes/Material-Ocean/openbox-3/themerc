@@ -1,0 +1,138 @@
+# Used Nord-Openbox's themerc file as base:
+# 	https://github.com/the-zero885/Nord-Openbox-theme
+# 	File:
+# 	https://github.com/the-zero885/Nord-Openbox-theme/blob/master/openbox-3/themerc
+# Got the colorscheme from this repo:
+# 	https://github.com/mbadolato/iTerm2-Color-Schemes
+# 	File:
+# 	https://github.com/mbadolato/iTerm2-Color-Schemes/blob/master/Xresources/MaterialOcean
+
+#
+# => Window
+#
+
+border.width: 2
+
+window.client.padding.width: 0
+window.client.padding.height: 0
+window.handle.width: 0
+
+padding.width: 6
+padding.height: 2
+
+window.active.border.color: #82aaff
+window.inactive.border.color: #272d47
+# window.active.title.separator.color: #272d47
+# window.inactive.title.separator.color: #272d47
+window.active.title.separator.color: #0f111a
+window.inactive.title.separator.color: #0f111a
+
+# => Buttoms
+
+# Minimize
+window.active.button.iconify.unpressed.image.color: #ffcb6b
+window.active.button.iconify.hover.image.color: #ffcb6b
+
+# Maximize
+window.active.button.max.unpressed.image.color: #c3e88d
+window.active.button.max.hover.image.color: #c3e88d
+window.active.button.max.toggled.unpressed.image.color: #c3e88d
+window.active.button.max.toggled.hover.image.color: #c3e88d
+
+# # Desk (???)
+# window.active.button.desk.unpressed.image.color: #ff5370
+# window.active.button.desk.hover.image.color: #ff5370
+
+# Close
+window.active.button.close.unpressed.image.color: #ff5370
+window.active.button.close.hover.image.color: #ff5370
+
+# Inactive
+window.inactive.button.*.image.color: #272d47
+
+# Make buttons' background the same as of the window
+window.active.button.unpressed.bg: parentrelative
+window.active.button.pressed.bg: parentrelative
+window.active.button.hover.bg: parentrelative
+window.active.button.disabled.bg: parentrelative
+window.active.button.toggled.unpressed.bg: parentrelative
+window.active.button.toggled.pressed.bg: parentrelative
+window.active.button.toggled.hover.bg: parentrelative
+
+window.inactive.button.unpressed.bg: parentrelative
+window.inactive.button.pressed.bg: parentrelative
+window.inactive.button.hover.bg: parentrelative
+window.inactive.button.disabled.bg: parentrelative
+window.inactive.button.toggled.unpressed.bg: parentrelative
+window.inactive.button.toggled.pressed.bg: parentrelative
+window.inactive.button.toggled.hover.bg: parentrelative
+
+# => Background Color
+
+window.active.title.bg: flat solid
+window.active.title.bg.color: #0f111a
+window.active.label.bg: flat solid
+window.active.label.bg.color: #0f111a
+
+window.inactive.title.bg: flat solid
+window.inactive.title.bg.color: #0f111a
+window.inactive.label.bg: flat solid
+window.inactive.label.bg.color: #0f111a
+
+# => Label
+
+window.label.text.justify: center
+
+window.active.label.text.color: #ffffff
+window.inactive.label.text.color: #ffffff
+
+#
+# => Menu
+#
+
+menu.border.width: 2
+menu.separator.width: 2
+menu.separator.padding.width: 10
+menu.separator.padding.height: 5
+
+menu.overlap.x: 0
+menu.overlap.y: 0
+
+menu.border.color: #0f111a
+menu.separator.color: #272d47
+
+# => Items
+
+menu.title.text.color: #ffffff
+menu.items.text.color: #ffffff
+menu.items.active.text.color: #ffffff
+
+menu.items.disabled.text.color: #8f93a2
+menu.items.active.disabled.text.color: #8f93a2
+
+menu.items.bg: flat solid
+menu.items.bg.color: #0f111a
+menu.items.active.bg: flat solid
+menu.items.active.bg.color: #82aaff
+menu.title.bg: flat solid
+menu.title.bg.color: #0f111a
+
+menu.title.text.justify: center
+
+#
+# => OSD
+#
+
+osd.border.width: 4
+
+osd.border.color: #272d47
+osd.label.text.color: #ffffff
+
+osd.bg: flat solid
+osd.bg.color: #0f111a
+osd.label.bg: flat solid
+osd.label.bg.color: #0f111a
+osd.hilight.bg: flat solid
+osd.hilight.bg.color: #82aaff
+osd.unhilight.bg: flat solid
+osd.unhilight.bg.color: #0f111a

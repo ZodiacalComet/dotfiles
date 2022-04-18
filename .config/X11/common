@@ -1,0 +1,36 @@
+#!/bin/sh
+
+################################################################################
+# => Screen
+################################################################################
+
+# Disable laptop's monitor
+xrandr --output LVDS1 --off
+# Setting up external monitor
+xrandr --output VGA1 —-primary --mode 1440x900
+xrandr --output VGA1 --brightness 0.84
+
+################################################################################
+# => Before starting WM
+################################################################################
+
+# Restore wallpaper if there was one
+if [ -f "$WALLPAPER_PATH" ]
+then
+	feh --no-fehbg --image-bg "$(~/.scripts/get-xresources-color bg)" --bg-max "$WALLPAPER_PATH"
+fi
+
+xrdb -merge ~/.config/X11/Xresources
+xsetroot -cursor_name left_ptr &
+
+#
+# -> Startup applications
+#
+
+dunst &                         # Notification daemon
+flameshot &                     # Screenshots
+sxhkd &                         # Hotkey daemon
+mpd &                           # Music player daemon
+picom &                         # Compositor
+nm-applet &                     # NetworkManager System Tray Applet
+~/.config/polybar/launch.sh     # Status bar

@@ -29,8 +29,7 @@ export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 ################################################################################
 
 if [[ "$(tty)" = "/dev/tty1" ]]; then
-	# $HOME/.scripts/start-menu
-	startx "$XDG_CONFIG_HOME/X11/bspwm"
+	$HOME/.scripts/start-menu
 fi
 
 ################################################################################

@@ -17,6 +17,7 @@ until [ "$selection" = "0" ]; do
   clear
   echo ""
   echo "   1  -  bspwm"
+  echo "   2  -  openbox"
   echo "   0  -  Stay in tty"
   echo ""
   echo -n "$PROMPT: "
@@ -24,6 +25,7 @@ until [ "$selection" = "0" ]; do
   echo ""
   case $selection in
     1 ) clear ; echo "Starting bspwm..." ; startx "$X11/bspwm" ;;
+    2 ) clear ; echo "Starting openbox..." ; startx "$X11/openbox" ;;
     0 ) clear ; exit ;;
     * ) clear ; echo "Not a valid selection!" ; press_enter ;;
   esac

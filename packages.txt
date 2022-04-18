@@ -121,6 +121,7 @@ neofetch
 network-manager-gnome
 newsboat
 ninja-build
+openbox
 pandoc
 pavucontrol
 pkg-config

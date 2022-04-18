@@ -1,4 +1,4 @@
 #!/bin/sh
 
 ~/.config/X11/common
-exec bspwm
+exec openbox
