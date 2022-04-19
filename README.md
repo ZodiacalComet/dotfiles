@@ -180,6 +180,17 @@ dot config status.showUntrackedFiles no
   cd dragon && make install
   ```
 
+- [**vifm**](https://github.com/vifm/vifm): Vifm is a file manager with curses interface, which provides Vim-like environment for managing objects within file systems, extended with some useful ideas from mutt.
+  ```sh
+  git clone https://github.com/vifm/vifm
+  cd vifm
+
+  ./scripts/fix-timestamps
+  ./configure --sysconfdir=/etc
+  make
+  make install
+  ```
+
 ## Pip
 
 - [**pipx**](https://github.com/pipxproject/pipx): Install and Run Python Applications in Isolated Environments.

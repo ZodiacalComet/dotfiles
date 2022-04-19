@@ -52,6 +52,7 @@ liblqr-1-0-dev
 libltdl-dev
 libmpdclient-dev
 libncurses5-dev
+libncursesw5-dev
 libnotify-bin
 libnotify-dev
 libnss3-dev
