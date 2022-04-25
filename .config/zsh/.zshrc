@@ -47,6 +47,8 @@ alias vim="nvim"
 alias nc="ncmpcpp"
 alias sx="nsxiv"
 alias sxiv="nsxiv"
+alias ex="arc unarchive"
+alias comp="arc archive"
 
 alias wget="wget --hsts-file='$XDG_CACHE_HOME/wget-hsts'"
 
@@ -69,54 +71,6 @@ alias yt="yt-dlp"
 alias ytv='yt-dlp --continue --add-metadata -f "mp4[height<=480]+bestaudio" -o "~/Videos/%(title)s.%(ext)s"'
 alias yta='yt-dlp --continue --add-metadata --embed-thumbnail --extract-audio --audio-format mp3 --audio-quality 0 -o "~/Music/%(title)s.%(ext)s"'
 alias ytal='yt-dlp --continue --add-metadata --embed-thumbnail --extract-audio --audio-format mp3 --audio-quality 0 -o "~/Music/%(artist)s - %(album)s/%(track)s.%(ext)s"'
-
-#
-# -> Managing compressed files
-#
-
-# From:
-#   Chris Titus     <https://github.com/ChrisTitusTech/zsh>
-#
-# # ex - archive extractor
-# # usage: ex <file>
-ex ()
-{
-  if [ -f $1 ] ; then
-    case $1 in
-      *.tar.bz2) tar xjf $1 ;;
-      *.tar.gz)  tar xzf $1 ;;
-      *.bz2)     bunzip2 $1 ;;
-      *.rar)     unrar x $1 ;;
-      *.gz)      gunzip $1 ;;
-      *.tar)     tar xf $1 ;;
-      *.tbz2)    tar xjf $1 ;;
-      *.tgz)     tar xzf $1 ;;
-      *.zip)     unzip $1 ;;
-      *.Z)       uncompress $1 ;;
-      *.7z)      7z x $1 ;;
-      *)         echo "'$1' cannot be extracted via ex()" ;;
-    esac
-  else
-    echo "'$1' is not a valid file"
-  fi
-}
-
-compr() {
-  local usage="Usage: compress <TYPE> <FILE>
-  In which TYPE is of:
-  tgz => *.tar.gz
-  tbz => *.tar.bz2 zip => *.zip 7z  => *.7z
-  "
-  [ -z "$1" ] || [ -z "$2" ] && (echo "$usage"; exit 1)
-  [ -f "$2" ] || (echo "'$2' cannot be interpreted as a file"; exit 1)
-  case $1 in
-    tbz) tar cvjf $2.tar.bz2 $2 ;;
-    tgz) tar cvzf $2.tar.gz $2 ;;
-    zip) zip -r $2.zip $2 ;;
-    7z)  7z a $2.7z $2 ;;
-    *)   echo "$usage" && return 1 ;;
-  esac
-}
 
 #
 # -> Going up multiple directories
