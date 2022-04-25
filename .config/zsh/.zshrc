@@ -47,6 +47,7 @@ alias vim="nvim"
 alias nc="ncmpcpp"
 alias sx="nsxiv"
 alias sxiv="nsxiv"
+alias fm="vifm"
 alias ex="arc unarchive"
 alias comp="arc archive"
 
