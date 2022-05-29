@@ -35,6 +35,6 @@ else
 fi
 
 # Make wallpaper to be set at startup
-cp $IMG $WALLPAPER_PATH
+cp "$IMG" "$WALLPAPER_PATH"
 
 feh --no-fehbg --image-bg "$(~/.scripts/get-xresources-color bg)" --bg-max "$IMG"
