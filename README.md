@@ -191,6 +191,16 @@ dot config status.showUntrackedFiles no
   make install
   ```
 
+- [**foliate**](https://github.com/johnfactotum/foliate): A simple and modern GTK eBook reader.
+  ```sh
+  git clone https://github.com/johnfactotum/foliate
+  cd foliate && git checkout 2.1.1
+
+  meson build
+  ninja -C build
+  sudo ninja -C build install
+  ```
+
 ## Pip
 
 - [**pipx**](https://github.com/pipxproject/pipx): Install and Run Python Applications in Isolated Environments.

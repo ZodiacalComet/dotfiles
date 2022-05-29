@@ -1,3 +1,4 @@
+appstream
 apt-file
 automake
 breeze
@@ -8,6 +9,7 @@ chromium
 cmake-data
 cmake
 curl
+dictd
 doxygen
 exa
 feh
@@ -19,7 +21,10 @@ gettext
 ghostscript
 gimp-python
 gimp
+gir1.2-gspell-1
+gir1.2-handy-0.0
 git
+gjs
 gnome-disk-utility
 gsfonts
 htop
