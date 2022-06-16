@@ -4,17 +4,6 @@
 
 ---
 
-```bash
-git clone --bare https://github.com/ZodiacalComet/dotfiles.git $HOME/.dotfiles
-
-alias dot="git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
-
-dot checkout
-dot config status.showUntrackedFiles no
-```
-
----
-
 - **WM:** bspwm
 - **Bar:** polybar
 - **Compositor:** picom

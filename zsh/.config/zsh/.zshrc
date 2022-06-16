@@ -36,8 +36,6 @@ fi
 # => Aliases
 ################################################################################
 
-alias dot="git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
-
 alias lc="exa -alFg --color=always --group-directories-first --git"
 alias lcx="exa -x --color=always --group-directories-first"
 alias lcxa="lcx -a"
