@@ -1,6 +1,10 @@
 ################################################################################
-# => General
+# => Essential
 ################################################################################
+
+# Quit bspwm normally
+super + alt + Escape
+	bspc quit
 
 # Open terminal
 super + Return
@@ -17,6 +21,10 @@ super + Escape
 # Restart Polybar
 super + shift + p
 	~/.config/polybar/launch.sh
+
+################################################################################
+# => Basic Functionality
+################################################################################
 
 # Screenshots
 Print
@@ -35,8 +43,38 @@ shift + Print
 XF86AudioMute
 	pactl set-sink-mute 0 toggle
 
+# Alternative volume control bindings
+#   This keyboard doesn't have keys for volume control
+#   TODO: Mute binding
+super + {_,shift + }KP_Subtract
+	pactl set-sink-mute 0 false ; pactl set-sink-volume 0 {-5,-1}%
+
+super + {_,shift + }KP_Add
+	pactl set-sink-mute 0 false ; pactl set-sink-volume 0 {+5,+1}%
+
 ################################################################################
-# => Custom
+# => Control
+################################################################################
+
+# MPC
+super + {KP_Left,KP_Right}
+	mpc seek {-,+}2
+
+super + shift + {KP_Left,KP_Right}
+	mpc {prev,next}
+
+# super + {_,shift + }KP_Left
+# 	mpc {seek -2,prev}
+#
+# super + {_,shift + }KP_Right
+# 	mpc {seek +2,next}
+
+#   TODO: Playlist selector with dmenu binded to Shift variant
+super + KP_Begin
+	mpc toggle
+
+################################################################################
+# => Applications & Scripts
 ################################################################################
 
 # F1: Power Menu
@@ -48,37 +86,29 @@ super + {F1,F2,F3}
 super + KP_Insert ; {KP_End,KP_Down,KP_Next}
 	~/.scripts/{system-menu,change-keyboard-layout,app-menu}
 
-# MPC
-super + {_,shift + }KP_Left
-	mpc {seek -2,prev}
-
-#   TODO: Playlist selector with dmenu binded to Shift variant
-super + KP_Begin
-	mpc toggle
-
-super + {_,shift + }KP_Right
-	mpc {seek +2,next}
-
 # Birthday Reminder
 super + {_,shift + }KP_Home
 	~/.scripts/polybar/birthday {--show,--edit}
 
-# Alternative volume control bindings
-#   This keyboard doesn't have keys for volume control
-#   TODO: Mute binding
-super + {_,shift + }KP_Subtract
-	pactl set-sink-mute 0 false ; pactl set-sink-volume 0 {-5,-1}%
+# Open Firefox
+super + KP_Insert ; f
+	firefox-esr -P aggressive-privacy-settings
 
-super + {_,shift + }KP_Add
-	pactl set-sink-mute 0 false ; pactl set-sink-volume 0 {+5,+1}%
+# Open qutebrowser
+super + KP_Insert ; q
+	qutebrowser
+
+# Open MEGAsync
+super + KP_Insert ; m
+	megasync
+
+# Open Discord with Chromium
+super + KP_Insert ; d
+	chromium --app="https://www.discord.com/app"
 
 ################################################################################
 # => Bspwm
 ################################################################################
-
-# Quit bspwm normally
-super + alt + Escape
-	bspc quit
 
 # Close and kill selected window
 super + {_,shift + }w
