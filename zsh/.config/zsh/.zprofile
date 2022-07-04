@@ -1,3 +1,8 @@
-# if [[ "$(tty)" = "/dev/tty1" ]]; then
-#     $HOME/.scripts/start-menu
-# fi
+################################################################################
+# => Start menu on tty1
+################################################################################
+
+if [[ "$(tty)" = "/dev/tty1" ]]; then
+	source $HOME/.config/zsh/path.zsh
+	$HOME/.scripts/start-menu
+fi

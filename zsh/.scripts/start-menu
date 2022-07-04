@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# Exit if there is already a WM running
-pgrep bspwm > /dev/null && exit
-
 X11="$XDG_CONFIG_HOME/X11"
 PROMPT="Select a WM to start"
 
