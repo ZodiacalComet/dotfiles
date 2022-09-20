@@ -115,4 +115,6 @@ return require("packer").startup(function()
       require("autocompletion")
     end,
   }
+
+  use 'alaviss/nim.nvim'
 end)
