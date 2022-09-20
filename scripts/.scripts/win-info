@@ -1,0 +1,6 @@
+#!/bin/bash
+
+TMP="/tmp/win-info"
+
+xwininfo > "$TMP"
+$TERMINAL -c "Floating Terminal" $EDITOR "$TMP"
