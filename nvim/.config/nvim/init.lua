@@ -119,12 +119,20 @@ function mode_map(mode, lhs, rhs)
   vim.api.nvim_set_keymap(mode, lhs, rhs, { noremap = true })
 end
 
+function mode_unmap(mode, lhs, rhs)
+  vim.api.nvim_del_keymap(mode, lhs)
+end
+
 function nmap(lhs, rhs)
   mode_map("n", lhs, rhs)
 end
 
 function imap(lhs, rhs)
   mode_map("i", lhs, rhs)
+end
+
+function iunmap(lhs)
+  mode_unmap("i", lhs)
 end
 
 -- General bindings
@@ -176,21 +184,68 @@ nvim_apply_mappings({
     function()
       telescope_builtin.find_files(ivy_theme)
     end,
-    noremap = true,
   },
   ["n<leader>b"] = {
     function()
       telescope_builtin.buffers(ivy_theme)
     end,
-    noremap = true,
   },
   ["n<leader>g"] = {
     function()
       telescope_builtin.live_grep(ivy_theme)
     end,
-    noremap = true,
   },
 
   -- Fugitive
-  ["nfg"] = { ":Git<cr>", noremap = true },
+  ["nfg"] = {
+    ":Git<cr>",
+  },
+}, {
+  noremap = true,
+})
+
+-- Mode to toggle mapping to type spanish characters with ease
+
+local spanish_helper = false
+
+nvim_apply_mappings({
+  ["n<A-Z>"] = {
+    function()
+      local doublek = ";;"
+      local prefix = "'"
+      local vowels = {
+        -- Lowercase
+        ["a"] = "á",
+        ["e"] = "é",
+        ["i"] = "í",
+        ["o"] = "ó",
+        ["u"] = "ú",
+        -- Uppercase
+        ["A"] = "Á",
+        ["E"] = "É",
+        ["I"] = "Í",
+        ["O"] = "Ó",
+        ["U"] = "Ú",
+      }
+
+      if spanish_helper then
+        iunmap(doublek)
+        for vowel, _ in pairs(vowels) do
+          iunmap(prefix .. vowel)
+        end
+
+        spanish_helper = false
+      else
+        imap(doublek, "ñ")
+        for vowel, to in pairs(vowels) do
+          imap(prefix .. vowel, to)
+        end
+
+        spanish_helper = true
+      end
+
+      print("Spanish keymappings " .. (spanish_helper and "enabled" or "disabled"))
+    end,
+    noremap = true,
+  },
 })
