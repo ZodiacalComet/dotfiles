@@ -106,4 +106,4 @@ if __name__ == "__main__":
     for line, keybind in zip(keybind_lines, keybinds):
         if keybinds.count(keybind) > 1:
             line = RED + line + RESET
-        print(line, sep="")
+        print(line)
