@@ -1,11 +1,15 @@
 #!/usr/bin/env python3
 import os, string
+from enum import Enum
 
 RED = "\033[1;31m"
 RESET = "\033[0m"
 
-KIND_CMD = 0
-KIND_SEQ = 1
+
+class TokenKind(Enum):
+    CMD = 0
+    SEQ = 1
+
 
 FILEPATH = os.path.expanduser("~/.config/sxhkd/sxhkdrc")
 
@@ -27,7 +31,7 @@ def tokenize_hotkey(hotkey):
             break
 
         if not idx == 0:
-            result.append((KIND_CMD, buf[:idx]))
+            result.append((TokenKind.CMD, buf[:idx]))
 
         buf = buf[idx + 1 :]
 
@@ -35,11 +39,11 @@ def tokenize_hotkey(hotkey):
         # If there is one "{" then it should be paired with "}", otherwise sxhkd
         # itself would error.
         assert not idx == -1
-        result.append((KIND_SEQ, buf[:idx]))
+        result.append((TokenKind.SEQ, buf[:idx]))
         buf = buf[idx + 1 :]
 
     if buf:
-        result.append((KIND_CMD, buf))
+        result.append((TokenKind.CMD, buf))
 
     return result
 
@@ -68,9 +72,9 @@ def expand_hotkey_sequences(parts):
 
     buf = []
     kind, part = parts[0]
-    if kind == KIND_CMD:
+    if kind == TokenKind.CMD:
         buf.append(part)
-    elif kind == KIND_SEQ:
+    elif kind == TokenKind.SEQ:
         buf = split_seq(part)
 
     if len(parts) == 1:
