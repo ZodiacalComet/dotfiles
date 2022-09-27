@@ -1,0 +1,18 @@
+#!/bin/bash
+
+set -e
+
+if [ -z $1 ]
+then
+	echo "Requires an URL" && exit 1
+fi
+
+MPV="mpv"
+if [ -x "$HOME/.scripts/bin/mpv-pip" ]
+then
+	MPV="$HOME/.scripts/bin/mpv-pip"
+fi
+
+URL=$1
+FORMAT="$(yt-dlp -q -F "$URL" | tail -n +3 | fzf | awk '{print $1;}')"
+$MPV "$(yt-dlp -f $FORMAT --get-url "$URL")"
