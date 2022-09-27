@@ -83,8 +83,8 @@ super + KP_Begin
 super + {F1,F2,F3}
 	~/.scripts/{system-menu,change-keyboard-layout,app-menu}
 
-super + KP_Delete
-	.scripts/win-info
+super + {_,shift + }KP_Delete
+	.scripts/win-info {--prop,--info}
 
 super + KP_Insert ; {KP_End,KP_Down,KP_Next}
 	~/.scripts/{system-menu,change-keyboard-layout,app-menu}

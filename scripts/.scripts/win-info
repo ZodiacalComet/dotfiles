@@ -1,6 +1,15 @@
 #!/bin/bash
 
 TMP="/tmp/win-info"
+PROG=""
 
-xwininfo > "$TMP"
+case "$1" in
+    --prop) PROG="xprop" ;;
+    --info) PROG="xwininfo" ;;
+    *)
+        echo "'$1' is not a valid option for this script."
+        exit 1 ;;
+esac
+
+$PROG > "$TMP"
 $TERMINAL -c "Floating Terminal" $EDITOR "$TMP"
