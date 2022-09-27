@@ -13,7 +13,7 @@ then
 fi
 
 function floating_terminal() {
-    $TERMINAL -c "Floating Terminal" $*
+    $TERMINAL -c "bspc-float" $*
 }
 
 case "$1" in

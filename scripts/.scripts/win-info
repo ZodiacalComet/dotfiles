@@ -12,4 +12,4 @@ case "$1" in
 esac
 
 $PROG > "$TMP"
-$TERMINAL -c "Floating Terminal" $EDITOR "$TMP"
+$TERMINAL -c "bspc-float-center-wide" $EDITOR "$TMP"

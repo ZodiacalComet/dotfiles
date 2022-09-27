@@ -1,0 +1,2 @@
+#!/bin/bash
+mpv --x11-name bspc-picture-in-picture $@
