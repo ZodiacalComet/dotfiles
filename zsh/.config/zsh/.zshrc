@@ -11,22 +11,24 @@ export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 # => Aliases
 ################################################################################
 
+alias vi="nvim"
+alias vim="nvim"
+alias cat="bat"
+alias sxiv="nsxiv"
+
+alias sx="nsxiv"
+alias nc="ncmpcpp"
+alias fm="vifm"
+
 alias lc="exa -alFg --color=always --group-directories-first --git"
 alias lcx="exa -x --color=always --group-directories-first"
 alias lcxa="lcx -a"
-
-alias vi="nvim"
-alias vim="nvim"
-alias nc="ncmpcpp"
-alias sx="nsxiv"
-alias sxiv="nsxiv"
-alias fm="vifm"
 alias ex="arc unarchive"
 alias comp="arc archive"
 
-alias wget="wget --hsts-file='$XDG_CACHE_HOME/wget-hsts'"
+alias todo='rg "(TODO|NOTE):"'
 
-alias cat="bat"
+alias wget="wget --hsts-file='$XDG_CACHE_HOME/wget-hsts'"
 
 #
 # -> Fanfiction
@@ -48,10 +50,12 @@ f2e() {
 }
 
 #
-# -> Youtube
+# -> Entertainment
 #
 
 alias yv="youtube-viewer"
+alias ma="mpv --profile=ytdl-audio"
+
 alias yt="yt-dlp"
 alias ytv='yt-dlp --continue --add-metadata -f "mp4[height<=480]+bestaudio" -o "~/Videos/%(title)s.%(ext)s"'
 alias yta='yt-dlp --continue --add-metadata --embed-thumbnail --extract-audio --audio-format mp3 --audio-quality 0 -o "~/Music/%(title)s.%(ext)s"'
