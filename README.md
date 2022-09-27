@@ -198,7 +198,7 @@
 
 - [**black**](https://github.com/psf/black): The uncompromising Python code formatter.
 - [**fanficfare**](https://github.com/JimmXinu/FanFicFare): FanFicFare is a tool for making eBooks from stories on fanfiction and other web sites.
-- [**fimfic2epub-cover-patch**](https://github.com/ZodiacalComet/fimfic2epub-cover-patch): Wrapper script around fimfic2epub's CLI to handle stories without a cover.
+- [**f2e-alt-cover**](https://github.com/ZodiacalComet/f2e-alt-cover): A wrapper script that replaces the default cover of fimfic2epub.
 - [**flake8**](https://github.com/PyCQA/flake8): flake8 is a python tool that glues together pycodestyle, pyflakes, mccabe, and third-party plugins to check the style and quality of some python code.
   - [**flake8-bugbear**](https://github.com/PyCQA/flake8-bugbear): A plugin for Flake8 finding likely bugs and design problems in your program. Contains warnings that don't belong in pyflakes and pycodestyle.
 - [**grip**](https://github.com/joeyespo/grip): Preview GitHub README.md files locally before committing them.
