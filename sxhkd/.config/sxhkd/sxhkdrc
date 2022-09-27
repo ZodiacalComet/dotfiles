@@ -110,7 +110,7 @@ super + KP_Insert ; d
 	chromium --app="https://www.discord.com/app"
 
 ################################################################################
-# => Bspwm
+# => Bspwm (Default)
 ################################################################################
 
 # Close and kill selected window
@@ -210,3 +210,11 @@ super + alt + shift + {h,j,k,l}
 # Move a floating window
 super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
+
+################################################################################
+# => Bspwm
+################################################################################
+
+# Make a node a floating and sticky one or a normal tiled one
+super + {_,shift + }u
+	bspc node {-t floating -g sticky=on,-t tiled -g sticky=off}
