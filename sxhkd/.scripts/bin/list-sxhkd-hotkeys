@@ -1,0 +1,109 @@
+#!/usr/bin/env python3
+import os, string
+
+RED = "\033[1;31m"
+RESET = "\033[0m"
+
+KIND_CMD = 0
+KIND_SEQ = 1
+
+FILEPATH = os.path.expanduser("~/.config/sxhkd/sxhkdrc")
+
+
+def filter_hotkeys(line: str) -> bool:
+    return (
+        bool(line.strip())
+        and not line.startswith(tuple(string.whitespace))
+        and not line.startswith("#")
+    )
+
+
+def tokenize_hotkey(hotkey):
+    result = []
+    buf = hotkey
+    while not buf == "":
+        idx = buf.find("{")
+        if idx == -1:
+            break
+
+        if not idx == 0:
+            result.append((KIND_CMD, buf[:idx]))
+
+        buf = buf[idx + 1 :]
+
+        idx = buf.find("}")
+        # If there is one "{" then it should be paired with "}", otherwise sxhkd
+        # itself would error.
+        assert not idx == -1
+        result.append((KIND_SEQ, buf[:idx]))
+        buf = buf[idx + 1 :]
+
+    if buf:
+        result.append((KIND_CMD, buf))
+
+    return result
+
+
+def split_seq(seq: str):
+    result = []
+
+    for part in seq.split(","):
+        if "-" in part and len(part) == 3:
+            start, _, end = part.partition("-")
+
+            # They have to be a single decimal number
+            assert len(start) == 1 and start.isdecimal()
+            assert len(end) == 1 and end.isdecimal()
+
+            result.extend(list(map(str, range(int(start), int(end) + 1))))
+            continue
+
+        result.append(part)
+
+    return result
+
+
+def expand_hotkey_sequences(parts):
+    result = []
+
+    buf = []
+    kind, part = parts[0]
+    if kind == KIND_CMD:
+        buf.append(part)
+    elif kind == KIND_SEQ:
+        buf = split_seq(part)
+
+    if len(parts) == 1:
+        return buf
+
+    for seq_el in map(lambda s: "" if s == "_" else s, buf):
+        for rest in expand_hotkey_sequences(parts[1:]):
+            result.append(seq_el + rest)
+
+    return result
+
+
+def unwrap_hotkey_def(hotkey: str):
+    tokens = tokenize_hotkey(hotkey)
+    return expand_hotkey_sequences(tokens)
+
+
+if __name__ == "__main__":
+    hotkeys_defs = []
+
+    with open(FILEPATH, "r", encoding="utf-8") as fd:
+        for i, line in filter(lambda t: filter_hotkeys(t[1]), enumerate(fd, start=1)):
+            hotkeys_defs.append((i, line.strip()))
+
+    keybind_lines = []
+    keybinds = []
+
+    for i, line in hotkeys_defs:
+        for hotkey in unwrap_hotkey_def(line):
+            keybind_lines.append(f"{i: 4} | {hotkey}")
+            keybinds.append(hotkey)
+
+    for line, keybind in zip(keybind_lines, keybinds):
+        if keybinds.count(keybind) > 1:
+            line = RED + line + RESET
+        print(line, sep="")
