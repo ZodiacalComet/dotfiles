@@ -247,7 +247,20 @@ $ mkdir -p ~/.local/share/mpd/playlists
       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   ```
 
-### Spellchecking
+# Post-install configuration
+
+## Wireshark
+
+```
+$ sudo groupadd wireshark
+$ sudo usermod -a -G wireshark <USER>
+$ sudo chgrp wireshark /usr/bin/dumpcap
+$ sudo chmod 750 /usr/bin/dumpcap
+$ sudo setcap cap_net_raw,cap_net_admin=eip /usr/bin/dumpcap
+$ sudo getcap /usr/bin/dumpcap
+```
+
+## VIM spellchecking
 
 ```
 Warning: Cannot find word list "es.utf-8.spl" or "es.ascii.spl"

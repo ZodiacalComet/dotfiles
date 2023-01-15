@@ -158,6 +158,7 @@ vim-gtk
 vim
 vlc
 wget
+wireshark
 xcb-proto
 xclip
 xdo
