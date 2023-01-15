@@ -190,6 +190,13 @@
   sudo ninja -C build install
   ```
 
+- [cmake](https://cmake.org/download/): An open-source, cross-platform family of tools designed to build, test and package software.
+  ```
+  ./bootstrap
+  make
+  sudo make install
+  ```
+
 ## Pip
 
 - [**pipx**](https://github.com/pipxproject/pipx): Install and Run Python Applications in Isolated Environments.
