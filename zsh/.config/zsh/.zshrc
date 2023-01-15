@@ -26,7 +26,7 @@ alias lcxa="lcx -a"
 alias ex="arc unarchive"
 alias comp="arc archive"
 
-alias todo='rg "(TODO|NOTE):"'
+alias todo='rg " (TODO|FIX|NOTE):"'
 
 alias wget="wget --hsts-file='$XDG_CACHE_HOME/wget-hsts'"
 
